@@ -1,18 +1,14 @@
-
-
 class Guess
   attr_reader :card, :guess, :suit, :value
 
   def initialize(string, card)
     @guess = string
-    arr = response.split
-    @value = arr[0]
-    @suit = arr[-1]
     @card = card
   end
 
   def correct?
-    return true if card.value == @value && card.suit == @suit
+    arr = response.split
+    return true if card.value == arr[0] && card.suit == arr[-1]
     return false
   end
 
