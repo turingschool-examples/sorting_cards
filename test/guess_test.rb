@@ -15,14 +15,16 @@ class TestCorrect < GuessTest
   end
 
   def test_it_exists
-    assert_instance_of Card, @card
+    assert_instance_of Guess, @guess
   end
 
-   
+  def test_it_contains_card
+    assert_instance_of Card, @guess.card
+  end
+
 
 end
 
-# pry(main)> card = Card.new("10", "Hearts")
 # #=> #<Card:0x00007f9984004cc0 @suit="Hearts", @value="10">
 #
 # pry(main)> guess = Guess.new("10 of Hearts", card)
