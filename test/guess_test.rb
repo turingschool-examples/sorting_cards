@@ -22,6 +22,10 @@ class TestCorrect < GuessTest
     assert_instance_of Card, @guess.card
   end
 
+  def test_it_responds_to_response
+    assert_equal("10 of Hearts", @guess.response)
+  end
+
 
 end
 
