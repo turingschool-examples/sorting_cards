@@ -30,6 +30,9 @@ class TestCorrect < GuessTest
     assert_equal(@guess.correct?, true)
   end
 
+  def test_feedback
+    assert_equal(@guess.feedback, "Correct!")
+  end
 
 end
 
