@@ -5,6 +5,9 @@ require_relative '../lib/card'
 
 
 class GuessTest < Minitest::Test
+end
+
+class TestCorrect < GuessTest
 
   def setup
     @card = Card.new("10", "Hearts")
@@ -14,6 +17,8 @@ class GuessTest < Minitest::Test
   def test_it_exists
     assert_instance_of Card, @card
   end
+
+   
 
 end
 
