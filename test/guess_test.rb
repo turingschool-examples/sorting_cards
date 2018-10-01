@@ -26,6 +26,10 @@ class TestCorrect < GuessTest
     assert_equal("10 of Hearts", @guess.response)
   end
 
+  def test_correct_return_true
+    assert_equal(@guess.correct?, true)
+  end
+
 
 end
 
