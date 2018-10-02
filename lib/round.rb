@@ -17,5 +17,9 @@ attr_reader :deck, :guesses
     @guesses << new_guess
     new_guess
   end
-
+  #
+  # def number_correct
+  #   @guesses
+  # end
+  #binding.pry
 end

@@ -31,19 +31,22 @@ class RoundTest < Minitest::Test
     new_guess = @round.record_guess({value: "3", suit: "Hearts"})
     assert_instance_of Guess, new_guess
     assert_equal "3 of Hearts", @round.guesses.last.response
+    assert_equal [new_guess], @round.guesses
   end
-  #
-  # def test_it_can_guess_correctly
-  #   new_guess = @round.record_guess({value: "3", suit: "Hearts"})
-  #   assert_equal true, new_guess.correct?
+
+  def test_it_can_guess_correctly
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal true, new_guess.correct?
+  end
+
+  # def test_it_can_count_number_of_correct_guesses
+  #   assert_equal 1, @round.number_correct
   # end
+
 end
 
 
 
-# pry(main)> round.guesses
-# #=> [#<Guess:0x00007f972a15c160 @card=#<Card:0x00007f972a227f18 @suit="Hearts", @value="3">, @response="3 of Hearts">]
-#
 # pry(main)> round.number_correct
 # #=> 1
 #
