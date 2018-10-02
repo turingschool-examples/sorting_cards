@@ -1,5 +1,3 @@
-
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/card'
-require './lib/guess'
+Dir["./lib/*.rb"].each {|file| require file }
