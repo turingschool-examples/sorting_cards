@@ -11,5 +11,11 @@ attr_reader :deck, :guesses
     @deck.cards.first
   end
 
+  def record_guess(card_hash)
+    guess = "#{card_hash[:value]} of #{card_hash[:suit]}"
+    new_guess = Guess.new(guess, current_card)
+    @guesses << new_guess
+    new_guess
+  end
 
 end

@@ -8,7 +8,7 @@ class Guess
   end
 
   def correct?
-    if response == card
+    if "#{card.value} of #{card.suit}" == card
       true
     else
       false

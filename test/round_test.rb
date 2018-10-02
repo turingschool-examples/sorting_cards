@@ -26,19 +26,21 @@ class RoundTest < Minitest::Test
     assert_instance_of Card, @round.current_card
     assert_equal @card_1, @round.current_card
   end
+
+  def test_it_can_make_a_new_guess_and_record_it
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert_instance_of Guess, new_guess
+    assert_equal "3 of Hearts", @round.guesses.last.response
+  end
+  #
+  # def test_it_can_guess_correctly
+  #   new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+  #   assert_equal true, new_guess.correct?
+  # end
 end
 
 
 
-# pry(main)> new_guess = round.record_guess({value: "3", suit: "Hearts"})
-# #=> #<Guess:0x00007f972a15c160 @card=#<Card:0x00007f972a227f18 @suit="Hearts", @value="3">, @response="3 of Hearts">
-#
-# pry(main)> new_guess.class
-# #=> Guess
-#
-# pry(main)> new_guess.correct?
-# #=> true
-#
 # pry(main)> round.guesses
 # #=> [#<Guess:0x00007f972a15c160 @card=#<Card:0x00007f972a227f18 @suit="Hearts", @value="3">, @response="3 of Hearts">]
 #
