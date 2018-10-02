@@ -40,5 +40,14 @@ class TestIncorrect < GuessTest
 
   def setup
     @card = Card.new("Queen", "Clubs")
+    @guess = Guess.new("Two of Diamonds", @card)
+  end
+
+  def test_correct_return_false
+    assert_equal(@guess.correct?, false)
+  end
+
+  def test_feedback
+    assert_equal(@guess.feedback, "Incorrect.")
   end
 end
