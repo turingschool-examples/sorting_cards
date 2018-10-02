@@ -1,10 +1,10 @@
 class Guess
   attr_reader :guess, :suit, :value, :card
-  def initialize(string, card)
-    @guess = string.downcase
+  def initialize(guess_string, card)
+    @guess = guess_string.downcase
     @card = card
     @suit = card.suit.downcase
-    @value = card.value.downcase
+    @value = card.value
   end
 
   def response
