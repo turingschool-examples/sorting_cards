@@ -12,9 +12,9 @@ class Round
   end
 
   def record_guess(args)
-    new_guess = Guess.new("#{args[value]} of #{args[suit]}", current_card)
+    new_guess = Guess.new("#{args[:value]} of #{args[:suit]}", current_card)
     @guesses << new_guess
-    @current_i.increment_loop(3)
+    @current_i = @current_i.increment_loop(3)
     new_guess
   end
 
