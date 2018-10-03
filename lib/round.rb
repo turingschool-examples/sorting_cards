@@ -1,3 +1,5 @@
+require_relative 'guess'
+
 class Round
   attr_reader :deck, :guesses
 

@@ -1,9 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require_relative '../lib/guess'
-require_relative '../lib/card'
-require_relative '../lib/deck'
-require_relative '../lib/round'
+require_relative 'test_helper'
 
 class TestRound < Minitest::Test
   def setup
@@ -24,25 +19,61 @@ class TestRound < Minitest::Test
 
   end
 
-  def test_record_guess
-
+  def test_record_guess_holds_guess
     new_guess = @round.record_guess({value: "3", suit: "Hearts"})
     assert_instance_of Guess, new_guess
+  end
+
+  def test_recorded_guess_correct
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
     assert new_guess.correct?
+  end
+
+  def test_recorded_guess_included_in_guesses
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
     assert_includes @round.guesses, new_guess
+  end
+
+  def test_number_correct
+    @round.record_guess({value: "3", suit: "Hearts"})
     assert_equal 1, @round.number_correct
+  end
+
+  def test_current_card
+    @round.record_guess({value: "3", suit: "Hearts"})
     new_current_card = @round.current_card
     assert_equal "4", new_current_card.value
     assert_equal "Clubs", new_current_card.suit
-    @round.record_guess({value: "Jack", suit: "Diamonds"})
-    assert_equal 2, @round.guesses.count
-    assert_equal "Incorrect.", @round.guesses.last.feedback
-    assert_equal 1, @round.number_correct
-    assert_equal 50.0, @round.percent_correct
-
   end
 
+  def test_2nd_guess_count
+    @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal 2, @round.guesses.count
+  end
 
+  def test_2nd_guess_count
+    @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal 2, @round.guesses.count
+  end
+
+  def test_feedback_returns_incorrect
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal "Incorrect.", @round.guesses.last.feedback
+  end
+
+  def test_number_correct
+    @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal 1, @round.number_correct
+  end
+
+  def test_percent_correct
+    @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal 50.0, @round.percent_correct
+  end
 
 
 end
