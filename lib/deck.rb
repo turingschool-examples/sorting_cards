@@ -10,7 +10,6 @@ class Deck
   #   # return deck (in an array)
   #   @deck
   # end
-
 end
 
 =begin
