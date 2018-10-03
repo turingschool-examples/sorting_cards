@@ -24,8 +24,8 @@ class DeckTest < Minitest::Test
     assert_equal 5, @deck.count
   end
 
-  # def test_it_can_sort_a_deck_of_cards
-  #   assert_equal [@card_1, @card_3, @card_4, @card_5, @card_2], @deck.sort
-  # end
+  def test_it_can_sort_a_deck_of_cards
+    assert_equal [@card_1, @card_2, @card_3, @card_4, @card_5], @deck.sort
+  end
 
 end

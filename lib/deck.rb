@@ -13,18 +13,15 @@ class Deck
   end
 
   def sort
-    n = @cards.length
-    loop do
-      swapped = false
-      (n-1).times do |index|
-        if @cards[index] > @cards[index + 1]
-          @cards[index],@cards[index + 1] = @cards[index + 1],@cards[index]
-          swapped = true
+      loop do
+        swap = false
+        (@cards.length - 1).times do |i|
+          if @cards[i].rank > @cards[i + 1].rank
+            @cards[i], @cards[i + 1] = @cards[i + 1], @cards[i]
+            swap = true
+          end
         end
+        @cards if !swap
       end
-      break if not swapped
-    end
-    cards
   end
-
 end
