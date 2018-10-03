@@ -49,11 +49,10 @@ class Array
         end
       end
     else
-require 'pry';
       result = self.map{|el| [el]}
 
 
-      3.times do
+      Math.log2(result.size).ceil.times do
         new_result = []
         result.each_slice(2).map do |a,b|
           if b == nil
@@ -65,11 +64,9 @@ require 'pry';
 
         result = new_result
 
-         binding.pry
-
       end
     end
-    result
+    result[0]
   end
 
 end
