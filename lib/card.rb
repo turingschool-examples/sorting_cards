@@ -6,10 +6,12 @@ class Card
     @suit = suit
   end
 
-  def to_i
-    i = self.value.to_i
-    return i unless i == 0
+  def to_f
+    suitdec = %w(Clubs Diamonds Hearts Spades).zip([0.1,0.2,0.3,0.4]).to_h
+    val_f = value.to_f
+    suit_f = suitdec[suit]
+    return val_f + suit_f unless val_f == 0.0
     facecards = %w(Jack Queen King Ace).zip(11..14).to_h
-    return facecards[self.value]
+    return facecards[value] + suit_f
   end
 end
