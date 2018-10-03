@@ -27,4 +27,10 @@ class DeckTest < Minitest::Test
 
     assert_equal "Error: deck.cards is not an Array", deck2.count
   end
+
+  def test_it_sorts_cards
+    @deck.sort
+
+    assert_equal [@card_3, @card_1, @card_4, @card_5, @card_2], @deck.cards
+  end
 end
