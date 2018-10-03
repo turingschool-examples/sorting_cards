@@ -1,3 +1,4 @@
+require 'pry'
 class Card
   attr_reader :value, :suit
 
