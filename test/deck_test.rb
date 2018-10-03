@@ -31,6 +31,6 @@ class DeckTest < Minitest::Test
   def test_it_sorts_cards
     @deck.sort
 
-    assert_equal [@card_3, @card_1, @card_4, @card_5, @card_2], @deck.cards
+    assert_equal [@card_1, @card_3, @card_4, @card_5, @card_2], @deck.cards
   end
 end
