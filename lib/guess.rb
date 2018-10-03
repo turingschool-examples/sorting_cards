@@ -15,11 +15,19 @@ class Guess
   end
 
   def correct?
-    binding.pry
-    if @guess.split(" of ") == @card
+    if @guess.split(" of ") == [ @card.value, @card.suit ]
       true
     else
       false
+    end
+  end
+
+  def feedback
+    # binding.pry
+    if correct? == true
+      "Correct!"
+    else
+      "Incorrect."
     end
   end
 
