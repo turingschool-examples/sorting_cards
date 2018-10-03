@@ -32,8 +32,8 @@ end
 
 class Array
   def merge_sort(other = nil)
-    result = []
     if other
+      result = []
       (other.size + self.size).times do
         # require 'pry'; binding.pry
         if self.empty?
@@ -47,12 +47,29 @@ class Array
         else
           result << other.shift
         end
+      end
+    else
+require 'pry';
+      result = self.map{|el| [el]}
 
-        if other.size == 0
 
+      3.times do
+        new_result = []
+        result.each_slice(2).map do |a,b|
+          if b == nil
+            new_result << a
+          else
+            new_result << a.merge_sort(b)
+          end
         end
+
+        result = new_result
+
+         binding.pry
+
       end
     end
     result
   end
+
 end
