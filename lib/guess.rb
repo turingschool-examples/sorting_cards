@@ -17,12 +17,20 @@ class Guess
   end
 
   def correct?
-    if guess = "#{card.value} of #{card.suit}"
-      guess == true
+    carding = ["#{card.value}", "of", "#{card.suit}"]
+    if guess.split == carding
+      true
     else
-      guess == false
+      false
     end
-    #if statement to check is the cards are the same
+  end
+
+  def feedback
+    if correct? == true
+      p "Correct!"
+    else
+      p "Incorrect!"
+    end
   end
 
 end
