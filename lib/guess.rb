@@ -1,5 +1,4 @@
-require './lib/card'
-require 'pry'
+
 
 class Guess
   attr_reader :guess, :card
@@ -37,5 +36,3 @@ end
 
 card = Card.new("10", "Hearts")
 guess = Guess.new("10 of Hearts", card)
-
-binding.pry
