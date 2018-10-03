@@ -1,4 +1,4 @@
-require_relative './guess'
+require './lib/guess'
 require 'pry'
 
 class Round
