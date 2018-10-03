@@ -39,17 +39,14 @@ class RoundTest < Minitest::Test
     assert_equal true, new_guess.correct?
   end
 
-  # def test_it_can_count_number_of_correct_guesses
-  #   assert_equal 1, @round.number_correct
-  # end
+  def test_it_can_count_number_of_correct_guesses
+    @round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal 1, @round.number_correct
+  end
 
 end
 
 
-
-# pry(main)> round.number_correct
-# #=> 1
-#
 # pry(main)> round.current_card
 # #=> #<Card:0x00007f9729a87998 @suit="Clubs", @value="4">
 #
@@ -61,9 +58,6 @@ end
 #
 # pry(main)> round.guesses.last.feedback
 # #=> "Incorrect."
-#
-# pry(main)> round.number_correct
-# #=> 1
-#
+
 # pry(main)> round.percent_correct
 # #=> 50.0
