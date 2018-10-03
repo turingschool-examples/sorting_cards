@@ -25,4 +25,34 @@ class Deck
     result
   end
 
+
+
+end
+
+
+class Array
+  def merge_sort(other = nil)
+    result = []
+    if other
+      (other.size + self.size).times do
+        # require 'pry'; binding.pry
+        if self.empty?
+          return result += other
+        elsif other.empty?
+          return result += self
+        end
+
+        if self[0] < other[0]
+          result << self.shift
+        else
+          result << other.shift
+        end
+
+        if other.size == 0
+
+        end
+      end
+    end
+    result
+  end
 end
