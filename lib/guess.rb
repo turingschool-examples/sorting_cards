@@ -1,5 +1,5 @@
-
-
+require './lib/card'
+require 'pry'
 class Guess
   attr_reader :guess, :card
 #The card in init is not the same card that is entered from the other app
@@ -16,8 +16,8 @@ class Guess
   end
 
   def correct?
-    carding = ["#{card.value}", "of", "#{card.suit}"]
-    if guess.split == carding
+    matching = ["#{card.value}", "of", "#{card.suit}"]
+    if guess.split == matching
       true
     else
       false
@@ -31,8 +31,6 @@ class Guess
       p "Incorrect!"
     end
   end
-
 end
 
-card = Card.new("10", "Hearts")
-guess = Guess.new("10 of Hearts", card)
+binding.pry
