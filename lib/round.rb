@@ -1,6 +1,6 @@
 class Round
 
-attr_reader :deck, :guesses, :number_correct
+  attr_reader :deck, :guesses, :number_correct
 
   def initialize(deck)
     @deck    = deck
@@ -9,13 +9,15 @@ attr_reader :deck, :guesses, :number_correct
   end
 
   def current_card
-    @deck.cards.first
+    card_1 = @deck.cards.shift
+    @deck.cards << card_1
+    card_1
   end
 
   def record_guess(card_hash)
     guess = "#{card_hash[:value]} of #{card_hash[:suit]}"
-    @guesses << new_guess = Guess.new(guess, current_card)
-    new_guess
+    @guesses << Guess.new(guess, current_card)
+    @guesses.last
   end
 
   def number_correct
@@ -26,6 +28,10 @@ attr_reader :deck, :guesses, :number_correct
       end
     end
     @number_correct_index
+  end
+
+  def percent_correct
+   (number_correct.to_f/@guesses.count)*100
   end
 
 end

@@ -23,8 +23,8 @@ class RoundTest < Minitest::Test
   end
 
   def test_it_can_get_current_card
-    assert_instance_of Card, @round.current_card
     assert_equal @card_1, @round.current_card
+    assert_instance_of Card, @round.current_card
   end
 
   def test_it_can_make_a_new_guess_and_record_it
@@ -44,20 +44,20 @@ class RoundTest < Minitest::Test
     assert_equal 1, @round.number_correct
   end
 
+  def test_it_can_count_number_of_incorrect_guesses
+    @round.record_guess({ value: "3", suit: "Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+
+    assert_equal @card_1, @round.current_card
+    assert_equal @card_2, @round.current_card
+    assert_equal 2, @round.guesses.count
+    assert_equal "Incorrect!", @round.guesses.last.feedback
+  end
+
+  def test_it_percent_correct
+    @round.record_guess({value:"3", suit:"Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal 50.0, @round.percent_correct
+  end
+
 end
-
-
-# pry(main)> round.current_card
-# #=> #<Card:0x00007f9729a87998 @suit="Clubs", @value="4">
-#
-# pry(main)> round.record_guess({value: "Jack", suit: "Diamonds"})
-# #=> #<Guess:0x00007f972a215b38...>
-#
-# pry(main)> round.guesses.count
-# #=> 2
-#
-# pry(main)> round.guesses.last.feedback
-# #=> "Incorrect."
-
-# pry(main)> round.percent_correct
-# #=> 50.0
