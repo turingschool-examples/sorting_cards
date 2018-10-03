@@ -7,7 +7,9 @@ class Guess
   end
 
   def correct?
-    @response.split[2] == @card.suit && @response.split[0] == @card.value
+    response_suit = @response.split[2]
+    response_value = @response.split[0]
+    response_suit == @card.suit && response_value == @card.value
   end
 
   def feedback
