@@ -1,7 +1,17 @@
-require './lib/deck'
+require_relative 'lib/mergeSortable'
+require_relative 'lib/deck'
+require_relative 'lib/guess'
+require_relative 'lib/card'
+require_relative 'lib/round'
 
-# a = [4,15,16,50]; b = [8,23,42,108]
-# p a.merge_sort(b)
+#
+#
+card_1 = Card.new("4","Hearts")
+card_2 = Card.new("Ace", "Spades")
+card_3 = Card.new("5", "Diamonds")
+card_4 = Card.new("Jack", "Clubs")
+card_5 = Card.new("Ace", "Diamonds")
+deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
 
-a = [1,2,3,9,2,0].merge_sort
+deck.merge_sort
 require 'pry'; binding.pry
