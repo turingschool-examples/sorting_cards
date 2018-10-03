@@ -4,7 +4,7 @@ class Guess
     @guess = guess_string.downcase
     @card = card
     @suit = card.suit.downcase
-    @value = card.value
+    @value = card.value.instance_of?(String) ? card.value.downcase : card.value
   end
 
   def response

@@ -14,7 +14,6 @@ class RoundTest < Minitest::Test
     @round = Round.new(@deck)
     @correct_guess = Guess.new("8 of Spades", @card_1)
     @correct_guess_2 = Guess.new("Queen of Hearts", @card_3)
-    @false_guess = Guess.new("Ace of Spades", @card_1)
   end
 
   def test_it_exists
@@ -53,5 +52,37 @@ class RoundTest < Minitest::Test
     assert_equal @card_1, @round.current_card
     @round.record_guess({value: 8, suit: "Spades"})
     assert_equal @card_2, @round.current_card
+  end
+
+  def test_it_knowns_how_many_guesses_are_correct
+    @round.record_guess({value: "Ace", suit: "Clubs"})
+    @round.record_guess({value: 8, suit: "Spades"})
+    @round.record_guess({value: "Queen", suit: "Hearts"})
+
+    assert_equal 3, @round.number_correct
+  end
+
+  def test_it_knowns_how_many_guesses_are_correct_with_a_false_guess
+    @round.record_guess({value: "Ace", suit: "Clubs"})
+    @round.record_guess({value: 8, suit: "Spades"})
+    @round.record_guess({value: "Queen", suit: "Spades"})
+
+    assert_equal 2, @round.number_correct
+  end
+
+  def test_it_knowns_how_many_guesses_are_correct_by_percentage
+    @round.record_guess({value: "Ace", suit: "Clubs"})
+    @round.record_guess({value: 8, suit: "Spades"})
+    @round.record_guess({value: "Queen", suit: "Hearts"})
+
+    assert_equal 100.0, @round.percent_correct
+  end
+
+  def test_it_knowns_how_many_guesses_are_correct_by_percentage_one_correct
+    @round.record_guess({value: 10, suit: "Clubs"})
+    @round.record_guess({value: 8, suit: "Clubs"})
+    @round.record_guess({value: "Queen", suit: "Hearts"})
+
+    assert_equal 33.3, @round.percent_correct
   end
 end

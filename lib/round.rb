@@ -28,4 +28,17 @@ class Round
     @current_index = 0 if current_index >= deck.cards.length
     @current_card = deck.cards[current_index]
   end
+
+  def number_correct
+    sum_of_correct = guesses.reduce(0) do |sum, guess|
+      sum += 1 if guess.correct?
+      sum
+    end
+  end
+
+  def percent_correct
+    percent_of_correct = (
+      number_correct / guesses.length.to_f * 100
+    ).round(1)
+  end
 end
