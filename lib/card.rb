@@ -5,4 +5,8 @@ class Card
     @value = value
     @suit = suit
   end
+
+#def combine
+##card.to_s = @card
+#end
 end

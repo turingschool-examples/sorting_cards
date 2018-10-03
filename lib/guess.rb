@@ -1,6 +1,8 @@
 
 class Guess
-  attr_reader :answer, :card
+  attr_reader :answer,
+              :card
+
   def initialize(answer, card)
     @answer = answer
     @card = card
@@ -14,16 +16,19 @@ class Guess
     @card
   end
 
+  def to_string
+    "#{card.value} of #{card.suit}"
+  end
+
   def correct?
-    answer == @card
+    answer == to_s
   end
 
   def feedback
-    if answer == @card
-      puts "Correct!"
+    if correct?
+      "Correct!"
     else
-      puts "Incorrect."
+      "Incorrect."
     end
-
   end
 end
