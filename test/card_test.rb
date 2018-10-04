@@ -5,6 +5,9 @@ require './lib/card'
 class CardTest < Minitest::Test
   def setup
     @card = Card.new("Ace", "Spades")
+    @card_2 = Card.new("Ace", "Clubs")
+    @card_3 = Card.new("Jack", "Hearts")
+    @card_4 = Card.new("3", "Clubs")
   end
 
   def test_it_exists
@@ -17,5 +20,21 @@ class CardTest < Minitest::Test
 
   def test_it_has_a_suit
     assert_equal "Spades", @card.suit
+  end
+
+  def test_it_compares_by_value_less_than
+    assert @card_4 < @card_3
+  end
+
+  def test_it_compares_by_value_greater_than
+    assert @card_3 > @card_4
+  end
+
+  def test_it_compares_by_suit_less_than
+    assert @card_2 < @card
+  end
+
+  def test_compares_by_suit_greater_than
+    assert @card > @card_2
   end
 end
