@@ -1,5 +1,4 @@
 require './test/test_helper'
-require 'pry'
 
 class CardTest < Minitest::Test
   def setup

@@ -1,5 +1,4 @@
 require './test/test_helper'
-require 'pry'
 
 class DeckTest < Minitest::Test
   def setup
