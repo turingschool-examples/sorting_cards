@@ -12,8 +12,8 @@ class Guess
   end
 
   def correct?
-    matching = ["#{card.value}", "of", "#{card.suit}"]
-    if guess.split == matching
+
+    if guess.split == ["#{card.value}", "of", "#{card.suit}"]
       true
     else
       false
