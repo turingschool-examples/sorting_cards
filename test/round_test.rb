@@ -51,23 +51,25 @@ class RoundTest < Minitest::Test
   end
 
   def test_it_records_correct_guesses_count
-    new_guess_1 = @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "3", suit: "Hearts"})
     assert_equal 1, @round.number_correct
-    new_guess_2 = @round.record_guess({value: "5", suit: "Diamonds"})
+    @round.record_guess({value: "5", suit: "Diamonds"})
     assert_equal 1, @round.number_correct
-    new_guess_3 = @round.record_guess({value: "2", suit: "Clubs"})
+    @round.record_guess({value: "2", suit: "Clubs"})
     assert_equal 2, @round.number_correct
   end
 
   def test_it_moves_to_next_card_after_guess
-    new_guess_1 = @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "3", suit: "Hearts"})
     assert_equal @card_2, @round.current_card
   end
 
   def test_it_can_calculate_percentage_correct
-    new_guess_1 = @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "3", suit: "Hearts"})
     assert_equal 100, @round.percent_correct
-    new_guess_2 = @round.record_guess({value: "5", suit: "Diamonds"})
+    @round.record_guess({value: "5", suit: "Diamonds"})
     assert_equal 50, @round.percent_correct
+    @round.record_guess({value: "5", suit: "Diamonds"})
+    assert_equal 33.3, @round.percent_correct
   end
 end

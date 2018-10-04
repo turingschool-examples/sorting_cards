@@ -33,10 +33,17 @@ class DeckTest < Minitest::Test
     assert_equal 9, @deck.count
   end
 
-  def test_it_can_sort_the_cards
+  def test_it_can_bubble_sort_the_cards
     sorted_deck = [@card_3, @card_5, @card_2, @card_6, @card_4,
       @card_9, @card_7, @card_8, @card_1]
     assert_equal sorted_deck, @deck.sort
+  end
+
+  def test_it_can_merge_sort_the_cards
+    skip
+    sorted_deck = [@card_3, @card_5, @card_2, @card_6, @card_4,
+      @card_9, @card_7, @card_8, @card_1]
+    assert_equal sorted_deck, @deck.sort("merge sort")
   end
 
 end
