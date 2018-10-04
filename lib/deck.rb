@@ -15,9 +15,8 @@ class Deck
   def sort
     deck_sorted = false
     sorted_deck_numbered = cards_to_numbers(@cards.clone)
-    ###add code to change below to the hash created
 
-    until deck_sorted #setup for numbers add functionality for cards
+    until deck_sorted
       deck_sorted = true
       (sorted_deck_numbered.length - 1).times do |i|
         if sorted_deck_numbered[i][0] > sorted_deck_numbered[i + 1][0]
@@ -64,12 +63,4 @@ class Deck
     deck_to_num
   end
 
-
 end
-
-# card_1 = Card.new("4","Hearts") 1st
-# card_2 = Card.new("Ace", "Spades") 5th
-# card_3 = Card.new("5", "Diamonds") 2nd
-# card_4 = Card.new("Jack", "Clubs") 3rd
-# card_5 = Card.new("Ace", "Diamonds") 4th
-#
