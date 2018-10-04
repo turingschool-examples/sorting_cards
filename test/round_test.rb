@@ -105,11 +105,11 @@ class TestRound < Minitest::Test
   end
 
   def test_percent_correct
-
+    
     help_setup_2_guesses
     assert_equal 50.0, @round.percent_correct
     help_setup_3_guesses
-    assert_equal 50.0, @round.percent_correct
+    assert_equal 33.3, @round.percent_correct
 
   end
 

@@ -16,7 +16,7 @@ class Round
   def record_guess(args)
     new_guess = Guess.new("#{args[:value]} of #{args[:suit]}", current_card)
     @guesses << new_guess
-    @current_i = @current_i.increment_loop(3)
+    @current_i = @current_i.increment_loop(@deck.cards.size - 1)
     new_guess
   end
 
@@ -25,7 +25,9 @@ class Round
   end
 
   def percent_correct
-    number_correct * 100.0 / @guesses.size
+    pc = (number_correct * 100.0 / @guesses.size.to_f).round(1)
+    require 'pry'; binding.pry if pc = 40.0
+    pc
   end
 
 end
