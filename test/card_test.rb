@@ -23,18 +23,18 @@ class CardTest < Minitest::Test
   end
 
   def test_it_compares_by_value_less_than
-
+    assert @card_4 < @card_3
   end
 
   def test_it_compares_by_value_greater_than
-
+    assert @card_3 > @card_4
   end
 
   def test_it_compares_by_suit_less_than
-
+    assert @card_2 < @card
   end
 
   def test_compares_by_suit_greater_than
-
+    assert @card > @card_2
   end
 end
