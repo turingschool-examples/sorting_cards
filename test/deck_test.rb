@@ -22,6 +22,13 @@ class CardTest < Minitest::Test
     @expected = [card_4, card_3, card_1, card_2, card_5]
   end
 
+  def help_setup_standard_deck
+  end
+
+  def help_test_against_merge_sort
+
+  end
+
   def test_sort
     help_setup_deck_config1
     assert_equal @expected, @deck.sort
@@ -30,10 +37,10 @@ class CardTest < Minitest::Test
   end
 
   def test_bubble_sort
-    skip
+
     help_setup_deck_config1
     assert_equal @expected, @deck.bubble_sort
-    endhelp_setup_deck_config2
+    help_setup_deck_config2
     assert_equal @expected, @deck.bubble_sort
   end
 

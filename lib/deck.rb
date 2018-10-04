@@ -30,12 +30,11 @@ class Deck
     loop do
       still_sorting = :maybe
       @cards.each_with_index do |c, i|
-        if i > 0 && c.to_f > @cards[i - 1].to_f
-          @cards[i], @cards[i - 1] = @cards.values_at(i, i - 1)
+        if i > 0 && c.to_f < @cards[i - 1].to_f
+          @cards[i], @cards[i - 1] = @cards.values_at(i - 1, i)
           still_sorting = true
         end
       end
-      binding.pry
       return @cards unless still_sorting == true
     end
   end

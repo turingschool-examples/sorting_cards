@@ -1,5 +1,5 @@
 class Guess
-  attr_reader :card, :guess, :suit, :value
+  attr_reader :card, :guess
 
   def initialize(string, card)
     @guess = string
@@ -8,13 +8,11 @@ class Guess
 
   def correct?
     arr = response.split
-    return true if card.value == arr[0] && card.suit == arr[-1]
-    return false
+    card.value == arr[0] && card.suit == arr[-1]
   end
 
   def feedback
-    return "Correct!"if correct?
-    "Incorrect."
+    correct? ? "Correct!" : "Incorrect."
   end
 
   def response
