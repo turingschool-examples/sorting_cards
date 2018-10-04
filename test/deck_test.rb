@@ -18,14 +18,14 @@ class DeckTest < Minitest::Test
     assert_equal [@card_1, @card_2, @card_3, @card_4, @card_5], @deck.cards
   end
 
-  def test_it_counts_cards_in_deck
-    assert_equal 5, @deck.count
+  def test_it_returns_error_if_data_is_not_array
+    assert_raises ArgumentError do  
+      Deck.new("cards")
+    end
   end
 
-  def test_it_returns_error_if_incorrect_data
-    deck2 = Deck.new("cards")
-
-    assert_equal "Error: deck.cards is not an Array", deck2.count
+  def test_it_counts_cards_in_deck
+    assert_equal 5, @deck.count
   end
 
   def test_it_sorts_cards
