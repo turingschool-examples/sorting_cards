@@ -30,7 +30,7 @@ class CardTest < Minitest::Test
     card_4 = Card.new("4", "Clubs")
     card_5 = Card.new("Ace", "Diamonds")
     deck = Deck.new([card_4, card_3, card_1, card_2, card_5])
-    assert_equal deck.merge_sort, [card_1, card_3, card_4, card_5, card_2]
+    assert_equal deck.merge_sort, [card_4, card_3, card_1, card_2, card_5]
   end
 
 end
