@@ -5,17 +5,12 @@ class Guess
   attr_reader :response, :card
 
   def initialize(response, card)
-    @guess = response
+    @response = response
     @card = card
   end
 
-  def response
-    # binding.pry
-    @guess
-  end
-
   def correct?
-    if @guess.split(" of ") == [ @card.value, @card.suit ]
+    if @response.split(" of ") == [ @card.value, @card.suit ]
       true
     else
       false
@@ -24,10 +19,10 @@ class Guess
 
   def feedback
     # binding.pry
-    if correct? == true
-      "Correct!"
+    if correct?
+      "You win!"
     else
-      "Incorrect."
+      "You're wrong."
     end
   end
 
