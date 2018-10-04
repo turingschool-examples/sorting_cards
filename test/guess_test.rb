@@ -23,11 +23,11 @@ class GuessTest < Minitest::Test
   end
 
   def test_correct_guess_returns_true
-    assert @guess_correct.correct?
+    assert_equal true, @guess_correct.correct?
   end
 
   def test_wrong_guess_returns_false
-    refute @guess_wrong.correct?
+    assert_equal false, @guess_wrong.correct?
   end
 
   def test_correct_guess_says_correct

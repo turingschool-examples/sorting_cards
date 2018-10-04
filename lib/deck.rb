@@ -12,9 +12,25 @@ class Deck
     @cards.length
   end
 
-  def sort
+  def sort_setup
+    @cards.map do |card|
+      [card.overall_value, card]
+    end
+  end
+
+  def sort(sort_method = "bubble sort")
+    case sort_method
+    when "bubble sort"
+      sorted_oa_values = bubble_sort(sort_setup)
+    when "merge sort"
+      sorted_oa_values = merge_sort(sort_setup)
+    end
+
+    sort_teardown(sorted_oa_values)
+  end
+
+  def bubble_sort(sorted_deck_numbered)
     deck_sorted = false
-    sorted_deck_numbered = cards_to_numbers(@cards.clone)
 
     until deck_sorted
       deck_sorted = true
@@ -27,40 +43,17 @@ class Deck
         end
       end
     end
+    sorted_deck_numbered
+  end
 
+  def merge_sort(sorted_deck_numbered)
+    #add merge sort here
+  end
+
+  def sort_teardown(sorted_deck_numbered)
     sorted_deck_numbered.map do |card|
       card[1]
     end
-  end
-
-  def cards_to_numbers(deck)
-    deck_to_num = Array.new
-
-    deck.each do |card|
-      if card.value == "Jack"
-        index_value = 11.0
-      elsif card.value == "Queen"
-        index_value = 12.0
-      elsif card.value == "King"
-        index_value = 13.0
-      elsif card.value == "Ace"
-        index_value = 14.0
-      else
-        index_value = card.value.to_f
-      end
-
-      if card.suit == "Clubs"
-        index_value += 0.1
-      elsif card.suit == "Diamonds"
-        index_value += 0.2
-      elsif card.suit == "Spades"
-        index_value += 0.3
-      else
-        index_value += 0.4
-      end
-      deck_to_num << [index_value, card]
-    end
-    deck_to_num
   end
 
 end
