@@ -18,7 +18,7 @@ class Round
     card = self.current_card
     guess = Guess.new("#{new_guess[:value]} of #{new_guess[:suit]}", card)
 
-    @guesses.push(guess)
+    @guesses << guess
 
     if guess.correct? then @number_correct += 1 end
 
