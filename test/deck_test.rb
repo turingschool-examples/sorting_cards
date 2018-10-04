@@ -1,4 +1,7 @@
 require_relative 'test_helper'
+require_relative '../lib/card'
+require_relative '../lib/deck'
+
 
 
 class CardTest < Minitest::Test
