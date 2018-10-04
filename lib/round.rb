@@ -25,9 +25,7 @@ class Round
   end
 
   def percent_correct
-    pc = (number_correct * 100.0 / @guesses.size.to_f).round(1)
-    require 'pry'; binding.pry if pc = 40.0
-    pc
+    (number_correct * 100.0 / @guesses.size.to_f).round(1)
   end
 
 end

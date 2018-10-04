@@ -47,6 +47,8 @@ class TestRound < Minitest::Test
 
   end
 
+
+
   def test_recorded_guess_correct
 
     new_guess = @round.record_guess({value: "3", suit: "Hearts"})
@@ -104,13 +106,16 @@ class TestRound < Minitest::Test
 
   end
 
-  def test_percent_correct
-    
+  def test_it_can_calc_percent_correct
+
     help_setup_2_guesses
     assert_equal 50.0, @round.percent_correct
+
+  end
+
+  def test_it_can_calc_percent_correct_with_repeating_decimals
     help_setup_3_guesses
     assert_equal 33.3, @round.percent_correct
-
   end
 
   #
