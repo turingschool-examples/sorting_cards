@@ -1,15 +1,12 @@
 class Round
-attr_reader :deck
+  attr_reader :deck, :guesses
 
   def initialize(deck)
     @deck = deck
-  end
-
-  def guesses
-    p '[ ]'
+    @guesses = []
   end
 
   def current_card
     
-
+  end
 end

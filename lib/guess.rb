@@ -7,7 +7,7 @@ class Guess
   end
 
   def response
-    p @guess
+    @guess
   end
 
   def correct?
@@ -15,19 +15,15 @@ class Guess
    guess_keywords = @guess.split (' ')
    card_suit = @card.suit
    card_value = @card.value
-   if guess_keywords[2] == card_suit && guess_keywords[0] == card_value
-     true
-   else
-     false
-   end
+   guess_keywords[2] == card_suit && guess_keywords[0] == card_value
   end
 
   def feedback
     #this is an instance of the Guess class, so you can call instance methods here
     if correct? == true
-      p "Correct!"
+      "Correct!"
     else
-      p "Incorrect."
+      "Incorrect."
     end
   end
 
