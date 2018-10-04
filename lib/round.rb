@@ -9,21 +9,23 @@ class Round
     @guesses = []
     @number_correct = 0
   end
-
+  
   def record_guess(guess)
     if @deck.count == 0
       return "The deck is empty!"
     end
+    
+    new_guess = create_new_guess(guess)
 
-    converted_guess = "#{guess[:value]} of #{guess[:suit]}"
-
-    new_guess = Guess.new(converted_guess, @deck.cards.shift)
-
-    @guesses.push(new_guess)
-
+    @guesses << new_guess
     check_guess(new_guess)
-
+    
     new_guess
+  end
+  
+  def create_new_guess(guess)
+    converted_guess = "#{guess[:value]} of #{guess[:suit]}"
+    Guess.new(converted_guess, @deck.cards.shift)
   end
 
   def check_guess(new_guess)
