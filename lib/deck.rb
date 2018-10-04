@@ -3,6 +3,7 @@ class Deck
 
   def initialize(cards)
     @cards = cards
+    #test this
   end
 
   def count
