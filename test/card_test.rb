@@ -13,8 +13,20 @@ class CardTest < Minitest::Test
     assert_equal "ace", @card.value
   end
 
+  def test_it_can_have_any_value
+    card2 = Card.new("Queen", "Hearts")
+
+    assert_equal "queen", card2.value
+  end
+
   def test_it_has_a_suit
     assert_equal "spades", @card.suit
+  end
+
+  def test_it_can_have_any_suit
+    card2 = Card.new("Queen", "Hearts")
+
+    assert_equal "hearts", card2.suit
   end
 
   def test_it_can_calculate_value_weight
