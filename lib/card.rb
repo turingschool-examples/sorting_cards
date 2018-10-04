@@ -5,7 +5,11 @@ class Card
   def initialize(value, suit)
     @value = value
     @suit  = suit
-    @card_value_ids = { "2" => 2,
+
+  end
+
+  def rank
+    card_value_ids = { "2" => 2,
                         "3" => 6,
                         "4" => 10,
                         "5" => 14,
@@ -19,14 +23,12 @@ class Card
                      "King" => 46,
                       "Ace" => 50 }
 
-    @card_suit_ids = { "Clubs" => 0,
+    card_suit_ids = { "Clubs" => 0,
                     "Diamonds" => 1,
                       "Hearts" => 2,
                       "Spades" => 3 }
-  end
 
-  def rank
-    @card_value_ids[value] + @card_suit_ids[suit]
+    card_value_ids[@value] + card_suit_ids[@suit]
   end
 
 end
