@@ -4,7 +4,6 @@ class Round
 
   attr_reader :deck,
               :guesses,
-              :current_card,
               :number_correct,
               :percent_correct
 
@@ -12,20 +11,35 @@ class Round
     @deck  = deck
     @guesses = []
     @deck_tracker = 0
-    @current_card = deck.cards[@deck_tracker]
     @number_correct = 0
     @percent_correct = 0.0
   end
 
+  def current_card
+    # if @deck_tracker == deck.cards.size
+    #   @deck_tracker = 0
+    # end
+    if @deck_tracker == deck.cards.size
+      puts "Sorry, out of cards!"
+    end
+    deck.cards[@deck_tracker]
+  end
+
   def record_guess(guess)
+    # Create method for this!
+    if current_card == nil
+      return "Game Over!"
+    end
+
     response = "#{guess[:value]} of #{guess[:suit]}"
 # check if it's better to use getter methods or access instance
 # variables directly???
-    current_guess = Guess.new(response, @current_card)
+    current_guess = Guess.new(response, current_card)
 
 # Separate this into a separate method?
+# How to deal with the end of the deck?
+# ...Check if deck_tracker is longer than deck length
     @deck_tracker += 1
-    @current_card = deck.cards[@deck_tracker]
 
     @guesses << current_guess
 
