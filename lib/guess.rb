@@ -1,25 +1,31 @@
+require 'pry'
+
 class Guess
   attr_reader :response, :card
 
   def initialize(response, card)
     @response = response
     @card = card
-    @approved_values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "ace", "king", "queen", "jack", "spades", "hearts", "diamonds", "clubs"]
   end
 
   def correct?  
-    response_list = @response.split(" ").select do | word |
-      sanitized_word = word.gsub!(/[^0-9A-Za-z]/, '') || word
-      
-      @approved_values.include?(sanitized_word.downcase)
-    end
+    formated_response = format_response(@response)
+    
+    formated_response[0] == @card.value &&
+    formated_response[1] == @card.suit
+  end
   
-    response_list[0] == @card.value &&
-    response_list[1] == @card.suit
+  def format_response(response)
+    response_list = response.split(" of ")
+    response_keyword_one = response_list[0].split(" ").last
+    response_keyword_two = response_list[1].split(" ").first
+    sanitized_keyword_one = response_keyword_one.gsub(/[^0-9A-Za-z]/, '').downcase
+    sanitized_keyword_two = response_keyword_two.gsub(/[^0-9A-Za-z]/, '').downcase
+    [sanitized_keyword_one, sanitized_keyword_two]
   end
 
   def feedback
-    if self.correct?
+    if correct?
       "Correct!"
     else
       "Incorrect."

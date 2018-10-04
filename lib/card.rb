@@ -31,13 +31,13 @@ class Card
     value_weight = calculate_value_weight(value)
     suit_weight = calculate_suit_weight(suit)
 
-    value_weight * suit_weight
+    "#{value_weight}.#{suit_weight}".to_f
   end
 
 
   def initialize(value, suit)
-    @suit = suit
-    @value = value
-    @card_weight = self.calculate_total_weight(@value, @suit)
+    @suit = suit.downcase
+    @value = value.downcase
+    @card_weight = calculate_total_weight(@value, @suit)
   end
 end

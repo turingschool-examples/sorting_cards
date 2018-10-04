@@ -1,4 +1,4 @@
-require_relative './guess'
+require './lib/guess'
 require 'pry'
 
 class Round
@@ -21,7 +21,7 @@ class Round
 
     @guesses.push(new_guess)
 
-    self.check_guess(new_guess)
+    check_guess(new_guess)
 
     new_guess
   end
