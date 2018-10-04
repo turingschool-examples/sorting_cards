@@ -38,6 +38,6 @@ class Card
   def initialize(value, suit)
     @suit = suit.downcase
     @value = value.downcase
-    @card_weight = self.calculate_total_weight(@value, @suit)
+    @card_weight = calculate_total_weight(@value, @suit)
   end
 end
