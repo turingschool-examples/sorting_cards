@@ -8,5 +8,5 @@ class Deck
   def count
     @cards.length
   end
-  
+
 end

@@ -13,7 +13,7 @@ class Guess
   end
 
   def feedback
-    self.correct? ? "Correct!" : "Incorrect."
+    if self.correct? then "Correct!" else "Incorrect." end
   end
 
 end
