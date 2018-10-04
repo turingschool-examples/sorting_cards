@@ -69,5 +69,7 @@ class RoundTest < Minitest::Test
     assert_equal 100, @round.percent_correct
     @round.record_guess({value: "5", suit: "Diamonds"})
     assert_equal 50, @round.percent_correct
+    @round.record_guess({value: "5", suit: "Diamonds"})
+    assert_equal 33.3, @round.percent_correct
   end
 end

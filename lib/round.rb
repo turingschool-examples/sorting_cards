@@ -7,7 +7,7 @@ class Round
     @deck = deck
     @guesses = []
     @card_number = 0
-    @number_correct = 0
+    @number_correct = 0  # calculate on the fly, no varialbe needed
   end
 
   def current_card
@@ -20,14 +20,16 @@ class Round
 
     @guesses << guess
 
-    if guess.correct? then @number_correct += 1 end
+    if guess.correct?
+      @number_correct += 1
+    end
 
     @card_number += 1
     guess
   end
 
   def percent_correct
-    @number_correct.to_f / @guesses.count.to_f * 100.0
+    (@number_correct.to_f / @guesses.count.to_f * 100.0).round(1)
   end
 
 end
