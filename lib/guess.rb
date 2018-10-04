@@ -1,19 +1,11 @@
 
 class Guess
-  attr_reader :answer,
+  attr_reader :response,
               :card
 
-  def initialize(answer, card)
-    @answer = answer
+  def initialize(response, card)
+    @response = response
     @card = card
-  end
-
-  def response
-     answer
-  end
-
-  def card
-    @card
   end
 
   def to_string
@@ -21,7 +13,7 @@ class Guess
   end
 
   def correct?
-    answer == to_s
+    @response == @card.to_s
   end
 
   def feedback
