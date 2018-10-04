@@ -19,11 +19,11 @@ class Round
     # if @deck_tracker == deck.cards.size
     #   @deck_tracker = 0
     # end
-    if @deck_tracker == deck.cards.size
-      puts "Sorry, out of cards!"
-    end
-    deck.cards[@deck_tracker]
-  end
+  #   if @deck_tracker == deck.cards.size
+  #     puts "Sorry, out of cards!"
+  #   end
+  #   deck.cards[@deck_tracker]
+  # end
 
   def record_guess(guess)
     # Create method for this!
