@@ -1,5 +1,3 @@
-require './lib/card'
-require 'pry'
 class Guess
   attr_reader :guess, :card
 #The card in init is not the same card that is entered from the other app
@@ -7,8 +5,6 @@ class Guess
   def initialize(guess, card)
     @guess = guess
     @card = card
-    @suit = card.suit
-    @value = card.value
   end
 
   def response
@@ -32,5 +28,3 @@ class Guess
     end
   end
 end
-
-binding.pry
