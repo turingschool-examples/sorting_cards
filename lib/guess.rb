@@ -10,11 +10,7 @@ class Guess
     value = @response.split.first
     suit = @response.split.last
 
-    if value == @card.value && suit == @card.suit
-      return true
-    else
-      return false
-    end
+    return value == @card.value && suit == @card.suit
   end
 
   def feedback
