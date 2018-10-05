@@ -1,4 +1,6 @@
 require_relative 'test_helper'
+require_relative '../lib/guess'
+require_relative '../lib/card'
 
 
 class GuessTest < Minitest::Test

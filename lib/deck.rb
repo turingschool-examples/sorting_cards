@@ -26,6 +26,19 @@ class Deck
     result
   end
 
+  def bubble_sort
+    loop do
+      still_sorting = :maybe
+      @cards.each_with_index do |c, i|
+        if i > 0 && c.to_f < @cards[i - 1].to_f
+          @cards[i], @cards[i - 1] = @cards.values_at(i - 1, i)
+          still_sorting = true
+        end
+      end
+      return @cards unless still_sorting == true
+    end
+  end
+
   def merge_sort(other = nil)
     cards = self.cards
     if other
