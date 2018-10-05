@@ -10,11 +10,7 @@ class Guess
   end
 
   def correct?
-    if @response.split(" of ") == [ @card.value, @card.suit ]
-      true
-    else
-      false
-    end
+    @response.split(" of ") == [ @card.value, @card.suit ]
   end
 
   def feedback

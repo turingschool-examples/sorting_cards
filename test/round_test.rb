@@ -46,18 +46,47 @@ class RoundTest < Minitest::Test
     # binding.pry
   end
 
-  def test_when_guess_method_is_called_current_card_changes
-    skip
+  def test_instance_of_guess
+    cards = Card.new("5", "Spades"), Card.new("7", "Clubs")
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    new_guess = Guess.new("5 of Spades", round.current_card)
+    assert_instance_of Guess, new_guess
   end
 
-  def test_that_guess_card_is_recorded
-    skip
+  def test_that_new_guess_can_be_recorded
+    cards = Card.new("5", "Spades"), Card.new("7", "Clubs")
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    new_guess = round.record_guess({value: "5", suit: "Spades" })
+    assert_instance_of Guess, new_guess
+    assert_equal "5 of Spades", round.guesses.last.response
   end
 
   def test_that_guess_card_is_class_guess
-    skip
+    cards = Card.new("5", "Spades"), Card.new("7", "Clubs")
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    new_guess = round.record_guess({value: "5", suit: "Spades" })
+    assert_equal Guess, new_guess.class
   end
 
+  def test_that_correct_guess_is_correct
+    cards = Card.new("5", "Spades"), Card.new("7", "Clubs")
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    new_guess = round.record_guess({value: "5", suit: "Spades" })
+    assert new_guess.correct?
+  end
+
+  def test_that_correct_guesses_are_counted
+    cards = Card.new("5", "Spades"), Card.new("7", "Clubs")
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    new_guess = round.record_guess({value: "5", suit: "Spades" })
+    assert_equal round.guesses.count, round.number_correct
+    binding.pry
+  end
 
 
 
