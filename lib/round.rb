@@ -6,17 +6,16 @@ class Round
   def initialize(deck)
     @deck = deck
     @guesses = []
-    @current_i = 0
   end
 
   def current_card
-    @deck.cards[@current_i]
+    @deck.cards.first
   end
 
   def record_guess(args)
     new_guess = Guess.new("#{args[:value]} of #{args[:suit]}", current_card)
     @guesses << new_guess
-    @current_i = @current_i.increment_loop(@deck.cards.size - 1)
+    @deck.cards.rotate!
     new_guess
   end
 
@@ -26,18 +25,6 @@ class Round
 
   def percent_correct
     (number_correct * 100.0 / @guesses.size.to_f).round(1)
-  end
-
-end
-
-class Integer
-
-  def increment_loop(max, amount = 1, min = 0)
-    if self < max
-      self.public_send("+", amount)
-    else
-      self.public_send("-", self)
-    end
   end
 
 end

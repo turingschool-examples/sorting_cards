@@ -75,7 +75,7 @@ class TestRound < Minitest::Test
       help_test_n_guesses(rand(1000))
       setup
     end
-    
+
   end
 
   def test_record_guess_holds_guess
