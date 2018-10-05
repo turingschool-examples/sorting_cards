@@ -27,6 +27,28 @@ class TestRound < Minitest::Test
 
   end
 
+  def help_get_random_value
+    ((1..10).to_a + %w(Jack Queen King Ace)).sample
+  end
+
+  def help_get_random_suit
+    %w(Hearts Diamonds Spades Clubs).sample
+  end
+
+  def help_set_up_n_guesses(n)
+
+    n.times do
+      @round.record_guess({value: help_get_random_value,
+                          suit: help_get_random_suit})
+    end
+
+  end
+
+  def help_test_n_guesses(n)
+    help_set_up_n_guesses(n)
+    assert_equal n, @round.guesses.count
+  end
+
   def test_it_has_guesses_array
 
     assert_equal @round.guesses, []
@@ -38,6 +60,22 @@ class TestRound < Minitest::Test
     assert_equal @round.current_card.suit, "Hearts"
     assert_equal @round.current_card.value, "3"
 
+  end
+
+  def test_it_holds_random_amount_of_guesses_up_to_10
+    3.times do
+      help_test_n_guesses(rand(10))
+      setup
+    end
+  end
+
+  def test_it_holds_random_amount_of_guesses_up_to_1000
+
+    3.times do
+      help_test_n_guesses(rand(1000))
+      setup
+    end
+    
   end
 
   def test_record_guess_holds_guess
@@ -75,20 +113,6 @@ class TestRound < Minitest::Test
     new_current_card = @round.current_card
     assert_equal "4", new_current_card.value
     assert_equal "Clubs", new_current_card.suit
-
-  end
-
-  def test_2nd_guess_count
-
-    help_setup_2_guesses
-    assert_equal 2, @round.guesses.count
-
-  end
-
-  def test_2nd_guess_count
-
-    help_setup_2_guesses
-    assert_equal 2, @round.guesses.count
 
   end
 
