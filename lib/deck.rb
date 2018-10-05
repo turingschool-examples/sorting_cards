@@ -9,13 +9,12 @@ class Deck
   end
 
   def sort
-    sortBubble(@cards)
+    sortBubbleRank(@cards)
   end
 
-  def sortBubble(array)
+  def sortBubbleRank(array)
     0.upto(array.size - 2) do |i|
-      bool = swap(array, i, i + 1) if bool = greater(array[i], array[i + 1])
-      p bool
+      bool = swap(array, i, i + 1) if array[i].rank > array[i + 1].rank
     end
   end
 
@@ -25,13 +24,5 @@ class Deck
     array[index1] = two
     array[index2] = one
     array
-  end
-
-  def greater(card1, card2)
-    if @hash[card1.value].to_i == @hash[card2.value].to_i
-      @hashSuit[card1.suit].to_i > @hashSuit[card2.suit].to_i
-    else
-      @hash[card1.value].to_i > @hash[card2.value].to_i
-    end
   end
 end

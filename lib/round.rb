@@ -5,7 +5,7 @@ class Round
   def initialize(deck)
     @deck = deck
     @guesses = []
-    @current_card = deck.cards.first
+    @current_card = deck.cards.shift
   end
 
   def next_card
@@ -21,16 +21,11 @@ class Round
   end
 
   def number_correct
-    correct = 0
-    guesses.each do |guess|
-      correct += 1 if guess.correct?
-    end
-    correct
+    guesses.count(&:correct?)
   end
 
   def percent_correct
     correct = number_correct
-    p correct, @guesses.count
     (correct.to_f / @guesses.count.to_f) * 100
   end
 end
