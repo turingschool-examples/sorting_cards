@@ -1,4 +1,5 @@
 require 'pry'
+require './lib/round.rb'
 
 class Guess
   attr_reader :response,
@@ -10,21 +11,21 @@ class Guess
   end
 
   def guess_value
-    x = @response.split(" ")
-    x.first
+    response_values = @response.split(" ")
+    response_values.first
   end
 
   def guess_suit
-    x = @response.split(" ")
-    x.last
+    response_values = @response.split(" ")
+    response_values.last
   end
 
   def correct?
-    (self.guess_value == card.value && self.guess_suit == card.suit)
+    guess_value == card.value && guess_suit == card.suit
   end
 
   def feedback
-    if self.correct? == true
+    if correct? == true
       return "Correct!"
     else
       return "Incorrect."

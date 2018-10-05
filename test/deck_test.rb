@@ -34,6 +34,6 @@ class DeckTest < Minitest::Test
     assert_equal deck.count, 3
   end
 
-
+  
 
 end
