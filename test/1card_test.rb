@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/card'
+require '/Users/jennicastiehl/Github/Turing/1module/projects/lib/card'
+include '/Users/jennicastiehl/Github/Turing/1module/projects/lib/card_game'
 
 class CardTest < Minitest::Test
   def test_it_exists
