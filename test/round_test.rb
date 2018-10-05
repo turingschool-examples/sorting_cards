@@ -1,7 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/round'
-
+require './lib/card'
+require './lib/deck'
 class RoundTest < Minitest::Test
   def setup
     @card_1 = Card.new("3","Hearts")
@@ -16,15 +17,25 @@ class RoundTest < Minitest::Test
     assert_instance_of Round, subject
   end
 
-  def test_it_has_a_value
-    skip
-    card = Card.new("Ace", "Spades")
-    assert_equal "Ace", card.value
+  def test_it_has_deck
+    subject = Round.new(@deck)
+    assert_equal @deck, subject.deck
   end
 
-  def test_it_has_a_suit
+  def test_current_card_is_first_on_deck
+    subject = Round.new(@deck)
+    assert_equal @card_1, subject.current_card
+  end
+
+  def test_a_guess_can_be_recorded
+    subject = Round.new(@deck)
+    assert_equal subject.guesses, []
+    new_guess = subject.record_guess({value: "3", suit: "Hearts"})
+    assert_instance_of Guess, new_guess
+    assert_equal true, new_guess.correct?
     skip
-    card = Card.new("Ace", "Spades")
-    assert_equal "Spades", card.suit
+    assert_equal [new_guess], subject.guesses
+    assert_equal 1 , subject.number_correct
+    assert_equal @card_2, subject.current_card
   end
 end

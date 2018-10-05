@@ -26,7 +26,4 @@ class Guess
 
 end
 
- card = Card.new("10", "Hearts")
- guess = Guess.new("10 of Hearts", card)
- guess_1 = Guess.new("2 of Diamonds", card)
- puts guess.correct?
+ 

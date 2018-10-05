@@ -1,6 +1,4 @@
 require "pry"
-require "./lib/card"
-
 
 class Deck
   attr_reader :cards
@@ -11,8 +9,6 @@ class Deck
 
   def count
     cards.count
-
   end
-
 
 end
