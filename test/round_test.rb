@@ -55,7 +55,7 @@ class RoundTest < Minitest::Test
     assert_equal [guess], @round.guesses
   end
 
-  def test_number_correct_guesses_is_recorded
+  def test_number_of_correct_guesses_is_recorded
     guess = @round.record_guess({value: "3", suit: "Hearts"})
     assert_equal 1, @round.number_correct
   end
@@ -77,7 +77,7 @@ class RoundTest < Minitest::Test
     assert_equal "Incorrect.", @round.guesses.last.feedback
   end
 
-  def test_number_correct_guesses_is_recorded_after_incorrect_guess
+  def test_number_of_correct_guesses_is_recorded_after_incorrect_guess
     @round.record_guess({value: "3", suit: "Hearts"})
     @round.record_guess({value: "Jack", suit: "Diamonds"})
     assert_equal 1, @round.number_correct
