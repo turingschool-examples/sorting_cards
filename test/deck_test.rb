@@ -4,6 +4,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card'
 require './lib/deck'
+require 'pry'
 
 class GuessTest < Minitest::Test
 
@@ -26,5 +27,17 @@ class GuessTest < Minitest::Test
   def test_it_can_count_elements
     assert_equal 3, @deck.count
   end
+
+  def test_it_can_value_cards
+    @deck.value_cards
+    assert_equal [], @deck.value_cards
+  end
+
+
+  def test_it_sorts
+    assert_equal [], @deck.sort
+  end
+
+
 
 end
