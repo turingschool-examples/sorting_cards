@@ -24,6 +24,57 @@ class Deck
     end
   end
 
+  def merge_sort(array, sort_direction = {reverse: false})
+    array_a, array_b, sorted = [], [], []
+    until array.empty?
+      n = array.length
+
+      if n >= 4
+        array_a, array_b = split_array(array)
+        sorted = sort_into_one(array_a, array_b)
+      elsif n == 3
+        array_a = sort_array(array.slice!(0, 2))
+        array_b = array[0]
+        sorted = sort_into_one(array_a, array_b)
+      elsif n == 2
+        array_a = sort_array(array)
+        sorted = sort_into_one(sorted, array_a)
+      else
+        sorted = sort_into_one(sorted, array)
+      end
+    end
+
+  end
+
+  def sort_into_one(array_a, array_b)
+    sorted = []
+    until array_a.empty? && array_b.empty?
+      if array_a[0] <= array_b[0]
+        sorted.push(array_a.slice!(0,1))
+      else
+        sorted.push(array_b.slice!(0,1))
+      end
+    end
+    sorted
+  end
+
+  def split_array(array)
+    array_a = sort_array(array.slice!(0,2))
+    array_b = sort_array(array.slice!(0,2))
+
+    return array_a, array_b
+  end
+
+  def sort_array(array)
+    sorted = []
+    if array[0] <= array[1]
+      sorted[0], sorted[1] = array[0], array[1]
+    else
+      sorted[0], sorted[1] = array[1], array[0]
+    end
+    sorted
+  end
+
   def check_for_swap(i, reverse = false)
     if reverse
       if cards[i] < cards[i+1]
