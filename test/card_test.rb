@@ -29,6 +29,20 @@ class CardTest < Minitest::Test
     assert_equal "hearts", card2.suit
   end
 
+  def test_it_returns_error_if_data_is_not_string
+    assert_raises ArgumentError do  
+      Card.new(4, 7)
+    end
+
+    assert_raises ArgumentError do  
+      Card.new("4", 7)
+    end
+
+    assert_raises ArgumentError do  
+      Card.new(4, "7")
+    end
+  end
+
   def test_it_can_calculate_value_weight
     assert_equal 13, @card.calculate_value_weight("Ace")
   end
