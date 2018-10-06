@@ -8,21 +8,11 @@ def merge_sort(array, sort_direction = {reverse: false})
 
     if n >= 4
       array_a, array_b = split_array(array)
-      if sorted.empty?
-        sorted << sort_into_one(array_a, array_b)
-      else
-        new_sorted = sort_into_one(array_a, array_b)
-        sorted = sort_into_one(sorted.flatten, new_sorted.flatten)
-      end
+      sorted = push_or_merge_to_sorted(sorted, array_a, array_b)
     elsif n == 3
       array_a = sort_array(array.slice!(0, 2))
       array_b = array[0]
-      if sorted.empty?
-        sorted << sort_into_one(array_a, array_b)
-      else
-        new_sorted = sort_into_one(array_a, array_b)
-        sorted = sort_into_one(sorted.flatten, new_sorted.flatten)
-      end
+      sorted = push_or_merge_to_sorted(sorted, array_a, array_b)
     elsif n == 2
       array_a = sort_array(array)
       sorted = sort_into_one(sorted.flatten, array_a)
@@ -31,6 +21,16 @@ def merge_sort(array, sort_direction = {reverse: false})
     end
   end
   sorted.flatten
+end
+
+def push_or_merge_to_sorted(sorted, array_a, array_b)
+  if sorted.empty?
+    sorted << sort_into_one(array_a, array_b)
+  else
+    new_sorted = sort_into_one(array_a, array_b)
+    sorted = sort_into_one(sorted.flatten, new_sorted.flatten)
+  end
+  sorted
 end
 
 def sort_into_one(array_a, array_b)
