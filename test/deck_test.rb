@@ -40,10 +40,15 @@ class DeckTest < Minitest::Test
   end
 
   def test_it_can_merge_sort_the_cards
-    skip
     sorted_deck = [@card_3, @card_5, @card_2, @card_6, @card_4,
       @card_9, @card_7, @card_8, @card_1]
     assert_equal sorted_deck, @deck.sort("merge sort")
+  end
+
+  def test_it_can_brute_force_sort_the_cards #runs in .07s with 9 cards
+    sorted_deck = [@card_3, @card_5, @card_2, @card_6, @card_4,
+      @card_9, @card_7, @card_8, @card_1]
+    assert_equal sorted_deck, @deck.sort("BRUTE FORCE!!!")
   end
 
 end
