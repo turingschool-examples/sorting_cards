@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card'
 require './lib/deck'
+require './lib/guess'
 require './lib/round'
 require 'pry'
 
@@ -28,5 +29,16 @@ class DeckTest < Minitest::Test
   def test_it_returns_current_card
     assert_equal @card_1, @round.current_card
   end
+
+  def test_it_records_guess
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal Guess, new_guess.class
+    assert_equal new_guess, @round.guesses[0]
+  end
+
+  #def test_it_evaluates_correct_guesses
+
+
+
 
 end #DeckTest Class
