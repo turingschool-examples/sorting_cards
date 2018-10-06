@@ -7,9 +7,10 @@ require 'pry'
 class DeckTest < Minitest::Test
 
   def setup
-    card_1 = Card.new("5", "Spades")
-    card_2 = Card.new("7", "Hearts")
-    @cards = [card_1, card_2]
+    card_1 = Card.new("3", "Hearts")
+    card_2 = Card.new("4", "Clubs")
+    card_3 = Card.new("5", "Diamonds")
+    @cards = [card_1, card_2, card_3]
   end
 
   def test_it_exists
@@ -19,6 +20,6 @@ class DeckTest < Minitest::Test
 
   def test_it_has_cards
     deck = Deck.new(@cards)
-    assert_equal 2, deck.count
+    assert_equal 3, deck.count
   end
 end

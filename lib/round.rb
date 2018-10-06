@@ -7,13 +7,14 @@ class Round
   end
 
   def current_card
-    @deck.cards[0]
+    @deck.top_card
   end
 
   def record_guess(storage)
     storage_response = "#{storage[:value]} of #{storage[:suit]}"
     new_guess = Guess.new(storage_response, current_card)
     @guesses << new_guess
+    @deck.top_card = @deck.cards.rotate[0]
     new_guess
   end
 
