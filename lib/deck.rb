@@ -10,7 +10,7 @@ class Deck
   end
 
   def count
-    cards.count
+    @cards.count
   end
 
   def greater_than(i)
@@ -32,6 +32,10 @@ class Deck
       end
     end
     return @cards
+  end
+
+  def merge_sort
+
   end
 
 end
