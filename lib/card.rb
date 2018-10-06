@@ -10,6 +10,14 @@ class Card
     card_value + suit_value
   end
 
+  def card_value
+    if special_card?
+      find_special_value
+    else
+      @value.to_f
+    end
+  end
+
   def suit_value
     if @suit == "Clubs"
       index_value = 0.1
@@ -23,7 +31,7 @@ class Card
   end
 
   def special_card?
-    @value.to_i == 0
+    @value.to_i == 0  # when value is string and not integer return true
   end
 
   def find_special_value
@@ -35,14 +43,6 @@ class Card
       index_value = 13.0
     else # @value == "Ace"
       index_value = 14.0
-    end
-  end
-
-  def card_value
-    if special_card?
-      find_special_value
-    else
-      @value.to_f
     end
   end
 
