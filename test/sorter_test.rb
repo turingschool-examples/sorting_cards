@@ -28,6 +28,10 @@ class SorterTest < Minitest::Test
     assert_equal values, @sorter.value_deck
   end
 
+  def test_it_sorts
+    assert_equal [@card_1, @card_3, @card_4, @card_5, @card_2], @deck.sort
+  end
+
 
 
 

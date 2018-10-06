@@ -13,17 +13,9 @@ class Deck
   end
 
   def sort
-    cards_values = value_cards
-
-    sorted_cards = []
-    @cards.each do |card|
-      #Iterate through deck (array of cards), comparing first and second.
-      # If the first is bigger, swap spots with second. If second is bigger,
-      # compare second and third.
-    end
-
-
-
+    sorter = Sorter.new(@cards)
+    sorter.value_deck
+    sorter.sort
   end
 
 
