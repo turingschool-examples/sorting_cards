@@ -36,7 +36,7 @@ class GuessTest < Minitest::Test
     assert_equal "Correct!", @guess.feedback
   end
 
-  def assert_it_has_feedback_negative
+  def test_it_has_feedback_negative
     @card = Card.new("Queen", "Clubs")
     @guess = Guess.new("2 of Diamonds", @card)
     assert_equal "Incorrect.", @guess.feedback
