@@ -1,4 +1,5 @@
-require_relative '../lib/card'
+require_relative 'card'
+require_relative 'deck'
 
 class StandardPlaying < Deck
 
