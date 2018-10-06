@@ -5,6 +5,7 @@ class Guess
 
   def initialize(response, card)
     @response = response
+    # require 'pry';binding.pry
     @card = card
   end
 
