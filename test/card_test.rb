@@ -5,7 +5,7 @@ require './lib/card'
 class CardTest < Minitest::Test
   def test_it_exists
     skip
-    card = Card.new("Ace", "Spades")
+    card = Card.new("Ace", "Spades") 
     assert_instance_of Card, card
   end
 
