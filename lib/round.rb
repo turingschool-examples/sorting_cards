@@ -7,7 +7,11 @@ class Round
   @@guesses = []
 
   def initialize(deck = nil)
-    @@deck = deck if deck
+     if deck
+       @@deck = deck
+     else
+       @@deck.cards.rotate!
+     end
   end
 
   #Query methods

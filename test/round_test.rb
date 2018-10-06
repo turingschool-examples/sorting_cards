@@ -47,14 +47,24 @@ class TestRound < Minitest::Test
     assert_equal n, @round.guesses.count
   end
 
+  #helper asserts
+  def assert_right_card(card, response)
+    assert_equal card.suit, response.split[-1]
+    assert_equal card.value, response.split[0]
+  end
+
   #Tests
   def test_it_has_guesses_array
     assert_equal @round.guesses, []
   end
 
   def test_current_card_gives_first_card_initially
-    assert_equal @round.current_card.suit, "Hearts"
-    assert_equal @round.current_card.value, "3"
+    assert_right_card @round.current_card, "3 of Hearts"
+  end
+
+  def test_current_card_gives_next_card_after_new_round
+    Round.new
+    assert_right_card @round.current_card, "4 of Clubs"
   end
 
   def test_it_holds_random_amount_of_guesses_up_to_10
@@ -113,6 +123,7 @@ class TestRound < Minitest::Test
     help_setup_3_guesses
     assert_equal 33.3, @round.percent_correct
   end
+
 
   #
 
