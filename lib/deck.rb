@@ -19,6 +19,7 @@ class Deck
   end
 
   def sort
+    return @cards if @cards.length <= 1
     swapped = true
     while swapped
       swapped = false
@@ -35,6 +36,11 @@ class Deck
   end
 
   def merge_sort
+    return @cards if @cards.length <= 1
+    left_array = []
+    right_array = []
+    half = cards.length / 2
+
 
   end
 
