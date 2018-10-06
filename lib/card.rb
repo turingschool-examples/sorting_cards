@@ -1,4 +1,9 @@
 class Card
+  SUITDEC = {"Clubs"=>0.1, "Diamonds"=>0.2, "Hearts"=>0.3, "Spades"=>0.4}
+  FACECARDS = {"Jack"=>11, "Queen"=>12, "King"=>13, "Ace"=>14}
+
+
+
   attr_reader :value, :suit, :to_f
   def initialize(value, suit)
     @value = value
@@ -6,14 +11,22 @@ class Card
     @to_f = to_float
   end
 
+  def self.from_f(float)
+  
+    suit = SUITDEC.key (float % 1).ceil(1)
+    value = float > 10 ? FACECARDS.key(float.round) : float.round.to_s
+
+    Card.new(value, suit)
+  end
+
   private
 
   def to_float
-    suitdec = %w(Clubs Diamonds Hearts Spades).zip([0.1,0.2,0.3,0.4]).to_h
     val_f = value.to_f
-    suit_f = suitdec[suit]
+    suit_f = SUITDEC[suit]
     return val_f + suit_f unless val_f == 0.0
-    facecards = %w(Jack Queen King Ace).zip(11..14).to_h
-    return facecards[value] + suit_f
+    return FACECARDS[value] + suit_f
   end
+
+
 end
