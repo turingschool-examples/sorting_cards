@@ -12,6 +12,11 @@ class TestRound < Minitest::Test
     @round = Round.new(@deck)
   end
 
+  def teardown
+    @round.clear_guesses
+  end
+
+  #Helper methods
   def help_setup_2_guesses
     @round.record_guess({value: "3", suit: "Hearts"})
     @round.record_guess({value: "Jack", suit: "Diamonds"})
@@ -33,8 +38,7 @@ class TestRound < Minitest::Test
 
   def help_set_up_n_guesses(n)
     n.times do
-      @round.record_guess({value: help_get_random_value,
-                          suit: help_get_random_suit})
+      @round.record_guess({value: help_get_random_value, suit: help_get_random_suit})
     end
   end
 
@@ -43,6 +47,7 @@ class TestRound < Minitest::Test
     assert_equal n, @round.guesses.count
   end
 
+  #Tests
   def test_it_has_guesses_array
     assert_equal @round.guesses, []
   end
@@ -55,6 +60,7 @@ class TestRound < Minitest::Test
   def test_it_holds_random_amount_of_guesses_up_to_10
     3.times do
       help_test_n_guesses(rand(10))
+      teardown
       setup
     end
   end
@@ -62,11 +68,12 @@ class TestRound < Minitest::Test
   def test_it_holds_random_amount_of_guesses_up_to_1000
     3.times do
       help_test_n_guesses(rand(1000))
+      teardown
       setup
     end
   end
 
-  def test_record_guess_holds_guess
+  def test_record_guess_returns_new_guess
     new_guess = @round.record_guess({value: "3", suit: "Hearts"})
     assert_instance_of Guess, new_guess
   end
@@ -82,15 +89,9 @@ class TestRound < Minitest::Test
   end
 
   def test_number_correct
+    binding.pry
     @round.record_guess({value: "3", suit: "Hearts"})
     assert_equal 1, @round.number_correct
-  end
-
-  def test_it_gets_new_current_card_after_successful_guess
-    @round.record_guess({value: "3", suit: "Hearts"})
-    new_current_card = @round.current_card
-    assert_equal "4", new_current_card.value
-    assert_equal "Clubs", new_current_card.suit
   end
 
   def test_feedback_returns_incorrect
