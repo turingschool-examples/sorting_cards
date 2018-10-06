@@ -51,8 +51,14 @@ class RoundTest < Minitest::Test
   end
 
   def test_it_can_rotate
-    skip
-    assert_equal
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal @card_2, @round.current_card
   end
 
+
+  def test_it_can_record_the_percent_correct
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    new_guess = @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal 50.0, @round.percent_correct
+  end
 end

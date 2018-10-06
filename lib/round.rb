@@ -20,7 +20,14 @@ attr_reader :deck,
     if current_guess.correct? == true
       @number_correct += 1
     end
+    @deck.cards.rotate!
     return current_guess
+  end
+
+  def percent_correct
+    @number_correct.to_f / @guesses.length * 100
+    #total number of guesses aka number of
+    #elements in the guess array
   end
 
 end

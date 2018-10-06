@@ -14,8 +14,7 @@ class GuessTest < Minitest::Test
   end
 
   def test_it_has_a_guess
-    skip #this test is not working yet
-    assert_equal "10 of Hearts", @guess.card
+    assert_equal @card, @guess.card
   end
 
   def test_it_has_a_response
