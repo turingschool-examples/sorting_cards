@@ -5,18 +5,23 @@ class Card
 
 
   attr_reader :value, :suit, :to_f
-  def initialize(value, suit)
+  def initialize(value, suit, float = nil)
     @value = value
     @suit = suit
-    @to_f = to_float
+     if float
+       @to_f = float
+     else
+       @to_f = to_float
+     end
+
   end
 
   def self.from_f(float)
-  
-    suit = SUITDEC.key (float % 1).ceil(1)
+
+    suit = SUITDEC.key (float % 1).round(1)
     value = float > 10 ? FACECARDS.key(float.round) : float.round.to_s
 
-    Card.new(value, suit)
+    Card.new(value, suit, float)
   end
 
   private
