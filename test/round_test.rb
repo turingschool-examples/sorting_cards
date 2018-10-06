@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card'
 require './lib/deck'
-require './lib/guess'
 require './lib/round'
 
 class RoundTest < Minitest::Test
@@ -51,14 +50,14 @@ class RoundTest < Minitest::Test
   end
 
   def test_it_test_correct_verifies_guess
+
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     card_3 = Card.new("5", "Diamonds")
     deck = Deck.new([card_1, card_2, card_3])
     round = Round.new(deck)
     new_guess = round.record_guess({value: "3", suit: "Hearts"})
-    require 'pry'
-    binding.pry
+
     assert new_guess.correct?
 
   end
