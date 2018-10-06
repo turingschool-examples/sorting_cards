@@ -4,10 +4,9 @@ class Guess
   def initialize (response, card)
     @response = response
     @card = card
-
   end
-  def correct?
 
+  def correct?
     [@card.value, @card.suit] == @response.split(' of ')
   end
 
@@ -15,7 +14,7 @@ class Guess
     if correct? == true
       p "True!"
     else
-      p "Wrong!"
+      p "False!"
     end
   end
 
