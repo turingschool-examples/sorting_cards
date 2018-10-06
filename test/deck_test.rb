@@ -4,6 +4,8 @@ require './lib/card'
 require './lib/guess'
 require './lib/deck'
 
+
+
 class DeckTest < Minitest::Test
   def test_it_exists
     card_1 = Card.new("3","Hearts")
@@ -21,7 +23,7 @@ class DeckTest < Minitest::Test
     assert_equal cards, deck.cards
   end
 
-  def test_it_has_count
+  def test_it_can_count
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     card_3 = Card.new("5", "Diamonds")

@@ -1,30 +1,30 @@
 class Guess
-  attr_reader :guess, :card
+  attr_reader :card, :response
 
-  def initialize(guess, card)
-    @guess = guess
+  def initialize(response, card)
     @card = card
+    @response = response
   end
 
-  def response
-    @guess
+  def build_card_response
+    "#{@card.value} of #{@card.suit}"
   end
 
   def correct?
     #.split separated the @guess values into an array, and we assigned that array to the variable guess_keywords
-   guess_keywords = @guess.split (' ')
-   card_suit = @card.suit
-   card_value = @card.value
-   guess_keywords[2] == card_suit && guess_keywords[0] == card_value
+   # return true if build_card_response == @response
+   # return false if build_card_response != @response
+   # or try shorthand with the ternary operator:
+   build_card_response == @response ? true : false
   end
 
   def feedback
-    #this is an instance of the Guess class, so you can call instance methods here
-    if correct? == true
-      "Correct!"
-    else
-      "Incorrect."
-    end
+    # if correct? == true
+    #   "Correct!"
+    # else
+    #   "Incorrect."
+    correct? == true ? "Correct!" : "Incorrect."
+    # end
   end
 
 end
