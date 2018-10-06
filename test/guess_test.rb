@@ -21,4 +21,12 @@ class GuessTest < Minitest::Test
   def test_it_has_a_card
     assert_equal @card, @guess.card
   end
+
+  def test_it_judges_correct_responses
+    assert_equal true, @guess.correct?
+  end
+
+  def test_it_provides_correct_feedback
+    assert_equal "Correct!", @guess.feedback
+  end
 end
