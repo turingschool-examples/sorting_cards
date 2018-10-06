@@ -33,6 +33,14 @@ class Card
     (self <=> other) == 1
   end
 
+  def <=(other)
+    (self <=> other) == -1 || (self <=> other) == 0
+  end
+
+  def >=(other)
+    (self <=> other) == 1 || (self <=> other) == 0
+  end
+
   def standardize_card_attribute(value_or_suit)
     if special_value?(value_or_suit)
       standardized = SPECIAL_VALUES[value_or_suit.to_s.downcase.to_sym]
