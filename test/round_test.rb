@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card'
 require './lib/deck'
+require './lib/guess'
 require './lib/round'
 
 class RoundTest < Minitest::Test
@@ -37,16 +38,37 @@ class RoundTest < Minitest::Test
     assert round.current_card
   end
 
-  
+  def test_if_new_guess_is_of_the_class_guess
+    card_1 = Card.new("3","Hearts")
+    card_2 = Card.new("4", "Clubs")
+    card_3 = Card.new("5", "Diamonds")
+    deck = Deck.new([card_1, card_2, card_3])
+    round = Round.new(deck)
+    new_guess = round.record_guess({value: "3", suit: "Hearts"})
+
+    assert_equal Guess, new_guess.class
+
+  end
+
+  def test_it_test_correct_verifies_guess
+    card_1 = Card.new("3","Hearts")
+    card_2 = Card.new("4", "Clubs")
+    card_3 = Card.new("5", "Diamonds")
+    deck = Deck.new([card_1, card_2, card_3])
+    round = Round.new(deck)
+    new_guess = round.record_guess({value: "3", suit: "Hearts"})
+    require 'pry'
+    binding.pry
+    assert new_guess.correct?
+
+  end
 
 end
 
 
 
-new_guess = round.record_guess({value: "3", suit: "Hearts"})
-# #=> #<Guess:0x00007f972a15c160 @card=#<Card:0x00007f972a227f18 @suit="Hearts", @value="3">, @response="3 of Hearts">
-# # binding.pry
-#
+
+
 # new_guess.class
 # #=> Guess
 # binding.pry
