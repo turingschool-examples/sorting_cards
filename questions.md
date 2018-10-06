@@ -3,6 +3,8 @@ Questions about this project:
 
 -What are we doing?
 something with a deck of cards
+guessing the top card
+seeing if that guess is right
 
 -What does Round do?
 it does a few things:

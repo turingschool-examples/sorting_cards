@@ -21,28 +21,27 @@ class Round
     new_guess
   end
 
-  # def number_correct
-  #   correct_guesses = @guesses.map do |guess|
-  #     if guess.feedback == "Correct!"
-  #       true
-  #     end
-  #   end
-  #   p correct_guesses.compact.count
-  # end
-
   def number_correct
-    correct_guesses = []
-      @guesses.each do |guess|
+    correct_guesses = @guesses.map do |guess|
       if guess.feedback == "Correct!"
-        correct_guesses << guess
+        true
       end
     end
-    p correct_guesses.count
+    p correct_guesses.compact.count
   end
 
+  # def number_correct
+  #   correct_guesses = []
+  #     @guesses.each do |guess|
+  #     if guess.feedback == "Correct!"
+  #       correct_guesses << guess
+  #     end
+  #   end
+  #   p correct_guesses.count
+  # end
+
   def percent_correct
-    n_c = number_correct
-    r_g = @guesses.count
-    p (n_c.to_f / r_g) * 100
+    right_guesses = @guesses.count
+    p (number_correct.to_f / right_guesses) * 100
   end
 end
