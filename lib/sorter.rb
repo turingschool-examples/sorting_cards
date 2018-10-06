@@ -29,21 +29,37 @@ class Sorter
     sorted_cards = []
     # .first creates array of [Card, [value score, suit score]]
     smallest_card = cards_values.first
+
     cards_values.size.times do
-      cards_values.each do |card, score|
-        if score[0] < smallest_card[1][0]
-          smallest_card = [card, score]
-        elsif score[0] == smallest_card[1][0]
-          if score[1] < smallest_card[1][1]
-            smallest_card = [card, score]
-          end
-        end
-      end
+      smallest_card = get_smallest_card(cards_values, smallest_card)
       sorted_cards << smallest_card[0]
       cards_values.delete(smallest_card[0])
       smallest_card = cards_values.first
     end
     sorted_cards
+  end
+
+  def get_smallest_card(cards_values, smallest_card)
+    cards_values.each do |card, score|
+      smallest_card = test_card_value(card, score, smallest_card)
+    end
+    smallest_card
+  end
+
+  def test_card_value(card, score, smallest_card)
+    if score[0] < smallest_card[1][0]
+      smallest_card = [card, score]
+    elsif score[0] == smallest_card[1][0]
+      smallest_card = test_card_suit(card, score, smallest_card)
+    end
+    smallest_card
+  end
+
+  def test_card_suit(card, score, smallest_card)
+    if score[1] < smallest_card[1][1]
+      smallest_card = [card, score]
+    end
+    smallest_card
   end
 
 end
