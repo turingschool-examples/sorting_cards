@@ -10,19 +10,30 @@ class GuessTest < Minitest::Test
   end
 
   def test_it_exists
+    assert_instance_of Guess, @guess
+  end
+
+  def test_it_has_a_guess
     skip
+    assert_equal "10 of Hearts", @guess.card
   end
 
   def test_it_has_a_response
-    skip
+    assert_equal "10 of Hearts", @guess.response
   end
 
   def test_it_is_correct
-    skip
+    assert_equal true, @guess.correct?
+  end
+
+  def test_it_is_not_correct
+    @card = Card.new("Queen", "Clubs")
+    @guess = Guess.new("2 of Diamonds", @card)
+    assert_equal false, @guess.correct?
   end
 
   def test_it_has_feedback
-    skip
+    assert_equal "Correct!", @guess.feedback
   end
 
 end
