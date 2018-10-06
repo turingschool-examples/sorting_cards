@@ -6,52 +6,45 @@ require './lib/guess.rb'
 
 
 class GuessTest < Minitest::Test
+
+  def setup
+    @card = Card.new("10", "Hearts")
+    @guess = Guess.new("10 of Hearts", @card)
+  end
+
   def test_guess_exists
 
-    card = Card.new("10", "hearts")
-    guess = Guess.new("10 of Hearts", card)
-    assert_instance_of Guess, guess
+    assert_instance_of Guess, @guess
   end
 
   def test_guess_has_response_method
 
-    card = Card.new("10", "hearts")
-    guess = Guess.new("10 of Hearts", card)
-    assert_equal guess.response, "10 of Hearts"
+    assert_equal "10 of Hearts", @guess.response
   end
 
   def test_guess_has_card_method
 
-    card = Card.new("10", "hearts")
-    guess = Guess.new("10 of Hearts", card)
-    assert_equal guess.card, card
+    assert_equal @card, @guess.card
   end
 
   def test_guess_value_is_integer
 
-    card = Card.new("10", "Hearts")
-    guess = Guess.new("10 of Hearts", card)
-    assert_equal guess.guess_value, "10"
+    assert_equal "10", @guess.guess_value
   end
 
   def test_guess_suit_is_hearts
 
-    card = Card.new("10", "Hearts")
-    guess = Guess.new("10 of Hearts", card)
-    assert_equal guess.guess_suit, "Hearts"
+    assert_equal "Hearts", @guess.guess_suit
   end
 
   def test_guess_is_correct
-    card = Card.new("10", "Hearts")
-    guess = Guess.new("10 of Hearts", card)
-    assert guess.correct?
+
+    assert @guess.correct?
   end
 
   def test_guess_has_correct_feedback
 
-    card = Card.new("10", "Hearts")
-    guess = Guess.new("10 of Hearts", card)
-    assert_equal guess.feedback, "Correct!"
+    assert_equal "Correct!", @guess.feedback
   end
 
 end

@@ -17,8 +17,8 @@ class Deck
   end
 
   def sorted?(array)
-    (array.length - 1).times do |i|
-      if array[i].valuation > array[i + 1].valuation
+    (array.length - 1).times do |card|
+      if array[card].valuation > array[card + 1].valuation
         return false
       end
     end
@@ -27,9 +27,9 @@ class Deck
 
   def sort
     until sorted?(@cards)
-      (@cards.length - 1).times do |i|
-        if @cards[i].valuation > @cards[i+1].valuation
-          @cards[i], @cards[i+1] = @cards[i+1], @cards[i]
+      (@cards.length - 1).times do |card|
+        if @cards[card].valuation > @cards[card+1].valuation
+          @cards[card], @cards[card+1] = @cards[card+1], @cards[card]
         end
       end
     end
