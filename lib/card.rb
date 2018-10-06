@@ -13,7 +13,7 @@ class Card
 
   def self.from_f(float)
   
-    suit = SUITDEC.key (float % 1).ceil(1)
+    suit = SUITDEC.key (float % 1).round(1)
     value = float > 10 ? FACECARDS.key(float.round) : float.round.to_s
 
     Card.new(value, suit)
