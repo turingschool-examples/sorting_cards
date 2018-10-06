@@ -15,7 +15,7 @@ class SorterTest < Minitest::Test
     @card_4 = Card.new("Jack", "Clubs")
     @card_5 = Card.new("Ace", "Diamonds")
     @deck = Deck.new([@card_1, @card_2, @card_3, @card_4, @card_5])
-    @sorter = Sorter.new(@deck)
+    @sorter = Sorter.new([@card_1, @card_2, @card_3, @card_4, @card_5])
   end
 
   def test_it_exists

@@ -1,9 +1,10 @@
 # sorter.rb
+require 'pry'
 
 class Sorter
 
-  def initialize(deck)
-    @deck = deck
+  def initialize(cards)
+    @cards = cards
   end
 
   def value_deck
@@ -14,22 +15,19 @@ class Sorter
                         "Hearts" => 2, "Spades" => 3}
 
     cards_values = {}
-    @deck.cards.each do |card|
+    @cards.each do |card|
       cards_values[card] = [values_sort_order[card.value],
                             suits_sort_order[card.suit]]
     end
-
     return cards_values
   end
 
   def sort
     cards_values = value_deck
-
     sorted_cards = []
     # .first creates array of [Card, [value score, suit score]]
     smallest_card = cards_values.first
-
-    cards_values.size do
+    cards_values.size.times do
       cards_values.each do |card, score|
         if score[0] < smallest_card[1][0]
           smallest_card = [card, score]
@@ -40,8 +38,10 @@ class Sorter
         end
       end
       sorted_cards << smallest_card[0]
+      cards_values.delete(smallest_card[0])
+      smallest_card = cards_values.first
     end
-
+    sorted_cards
   end
 
 end
