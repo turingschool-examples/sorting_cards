@@ -44,4 +44,27 @@ class DeckTest < Minitest::Test
     @deck_2.sort(reverse: true)
     assert_equal expected, @deck_2.cards
   end
+
+  def test_it_sorts_a_deck_ascending_merge_sort
+    current = [@card_1, @card_2, @card_3, @card_4, @card_5]
+    expected = [@card_3, @card_2, @card_5, @card_4, @card_1]
+
+    assert_equal current, @deck_2.cards
+
+    @deck_2.merge_sort
+    assert_equal expected, @deck_2.cards
+  end
+
+  def test_it_sorts_a_deck_descending_merge_sort
+    current = [@card_1, @card_2, @card_3, @card_4, @card_5]
+    expected = [@card_1, @card_4, @card_5, @card_2, @card_3]
+    assert_equal current, @deck_2.cards
+
+    @deck_2.sort(reverse: true)
+    assert_equal expected, @deck_2.cards
+  end
+
+  def test_it_returns_string_if_trying_to_merge_sort_array_less_than_three
+    assert_equal "Use another method", @deck.merge_sort
+  end
 end
