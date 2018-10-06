@@ -9,20 +9,17 @@ class DeckTest < Minitest::Test
     card_1 = Card.new("3","Hearts")
     assert_instance_of Card , card_1
   end
-# card_1 = Card.new("3","Hearts")
-# #=> #<Card:0x00007fa16104e160 @suit="Hearts", @value="3">
+
   def test_if_card_2_exists
     card_2 = Card.new("4", "Clubs")
     assert_instance_of Card , card_2
   end
-# card_2 = Card.new("4", "Clubs")
-# #=> #<Card:0x00007fa160a62e90 @suit="Clubs", @value="4">
+
   def test_if_card_3_exists
     card_3 = Card.new("5", "Diamonds")
     assert_instance_of Card , card_3
   end
-# card_3 = Card.new("5", "Diamonds")
-# #=> #<Card:0x00007fa161a136f0 @suit="Diamonds", @value="5">
+
   def test_if_deck_exists
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
