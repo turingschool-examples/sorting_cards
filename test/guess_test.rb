@@ -54,7 +54,7 @@ class GuessTest < Minitest::Test
      assert_equal card, guess.card
   end
 
-  def test_it_has_a_response
+  def test_it_has_a_response_for_alternate_cards
      card = Card.new("Queen", "Clubs")
      guess = Guess.new("2 of Diamonds", card)
 
