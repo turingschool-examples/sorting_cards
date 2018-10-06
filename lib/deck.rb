@@ -1,5 +1,4 @@
-#Create a Deck class with an accompanying test file.
-# A Deck is initialized with an array of Card objects.
+require 'pry'
 
 class Deck
 
@@ -12,4 +11,11 @@ class Deck
   def count
     @cards.size
   end
+
+  def sort
+    Sorter.new(@cards).sort
+  end
+
+
+
 end
