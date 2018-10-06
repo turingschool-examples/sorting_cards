@@ -1,6 +1,6 @@
 require './lib/deck'
 require './lib/guess'
-# require './lib/card'
+require './lib/card'
 
 
 class Round
@@ -9,21 +9,17 @@ class Round
 
      def initialize(deck)
        @deck = deck
-       @guesses = [] #needs to be set equal to the class guess
-                    # at a later point
-       @current_card = deck.cards.shift#this needs to equal card_1
+       @guesses = []
+       @current_card = deck.cards.shift
      end
 
      def record_guess(new_guess)
-       # require 'pry'; binding.pry
-
-       @guesses << Guess.new(@current_card, new_guess) 
-
+       @guesses << Guess.new(@current_card, new_guess)
+       return guesses.last
      end
 
      def correct?
-       @current_card = guesses.cards[0]
-
+       @current_card == guesses.cards[0]
      end
 
 end
