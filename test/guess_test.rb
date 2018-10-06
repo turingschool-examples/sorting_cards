@@ -58,19 +58,17 @@ class GuessTest < Minitest::Test
      card = Card.new("Queen", "Clubs")
      guess = Guess.new("2 of Diamonds", card)
 
-     assert guess.response
+    assert guess.response
   end
 
-  def test_correct_verifies_guess
+  def test_correct_verifies_guess_for_alternate_cards
       card = Card.new("Queen", "Clubs")
       guess = Guess.new("2 of Diamonds", card)
 
-      assert guess.correct?
+     assert_equal false, guess.correct?
   end
 
-# guess.correct?
-#  # false
-#
+
 # guess.feedback
 #  # "Incorrect."#
 
