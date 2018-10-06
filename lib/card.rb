@@ -5,10 +5,15 @@ class Card
 
 
   attr_reader :value, :suit, :to_f
-  def initialize(value, suit, float = to_float)
+  def initialize(value, suit, float = nil)
     @value = value
     @suit = suit
-    @to_f = float
+     if float
+       @to_f = float
+     else
+       @to_f = to_float
+     end
+
   end
 
   def self.from_f(float)
