@@ -56,9 +56,7 @@ class Sorter
   end
 
   def test_card_suit(card, score, smallest_card)
-    if score[1] < smallest_card[1][1]
-      smallest_card = [card, score]
-    end
+    smallest_card = [card, score] if score[1] < smallest_card[1][1]
     smallest_card
   end
 
