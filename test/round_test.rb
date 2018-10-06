@@ -86,7 +86,7 @@ class TestRound < Minitest::Test
     assert_equal 1, @round.number_correct
   end
 
-  def test_current_card
+  def test_it_gets_new_current_card_after_successful_guess
     @round.record_guess({value: "3", suit: "Hearts"})
     new_current_card = @round.current_card
     assert_equal "4", new_current_card.value

@@ -15,7 +15,7 @@ class Round
   def record_guess(args)
     new_guess = Guess.new("#{args[:value]} of #{args[:suit]}", current_card)
     @guesses << new_guess
-    @deck.cards.rotate!
+    @deck.cards.rotate! if new_guess.correct?
     new_guess
   end
 
