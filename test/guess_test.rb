@@ -75,7 +75,7 @@ class GuessTest < Minitest::Test
 
      guess.correct?
 
-     assert_equal "Wrong!", guess.feedback
+     assert_equal "False!", guess.feedback
   end
 
 end
