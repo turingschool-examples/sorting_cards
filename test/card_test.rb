@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card.rb'
+require 'pry'
 
 class CardTest < Minitest::Test
   def test_it_exists
@@ -16,5 +17,10 @@ class CardTest < Minitest::Test
   def test_it_has_a_suit
     card = Card.new("Ace", "Spades")
     assert_equal "Spades", card.suit
+  end
+
+  def it_has_a_valuation
+    card = Card.new("Ace", "Spades")
+    assert_equal 144, card.valuation
   end
 end

@@ -6,9 +6,6 @@ class Deck
 
   def initialize(cards)
     @cards = cards
-    @card_order = ["2", "3", "4", "5", "6", "7", "8", "9", "10",
-                    "Jack", "Queen", "King", "Ace"]
-    @suit_order = ["Clubs", "Diamonds", "Hearts", "Spades"]
   end
 
   def count
@@ -19,7 +16,25 @@ class Deck
     cards.shift
   end
 
+  def sorted?(array)
+    (array.length - 1).times do |card|
+      if array[card].valuation > array[card + 1].valuation
+        return false
+      end
+    end
+    true
+  end
 
+  def sort
+    until sorted?(@cards)
+      (@cards.length - 1).times do |card|
+        if @cards[card].valuation > @cards[card+1].valuation
+          @cards[card], @cards[card+1] = @cards[card+1], @cards[card]
+        end
+      end
+    end
+    return @cards
+  end
 
 
 end

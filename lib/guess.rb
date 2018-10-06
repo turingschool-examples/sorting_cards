@@ -21,7 +21,7 @@ class Guess
   end
 
   def correct?
-    guess_value == card.value && guess_suit == card.suit
+    guess_value == @card.value && guess_suit == @card.suit
   end
 
   def feedback
