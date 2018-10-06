@@ -127,5 +127,5 @@ class Deck
     end
     merged_list
   end
-
+  
 end
