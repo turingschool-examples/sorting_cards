@@ -8,11 +8,7 @@ class Guess
   end
 
   def correct?
-    if "#{card.value} of #{card.suit}" == response
-      true
-    else
-      false
-    end
+    "#{card.value} of #{card.suit}" == response
   end
 
   def feedback
