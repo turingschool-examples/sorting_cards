@@ -2,7 +2,6 @@ require './lib/guess'
 require 'pry'
 class Round
   attr_reader :deck, :guesses, :number_correct
-
   def initialize(deck)
     @deck = deck
     @guesses = []
@@ -11,19 +10,15 @@ class Round
 
   def current_card
     @deck.cards[0]
-    # new_card = @deck.cards.rotate(1)
-    # @deck << new_card
+
   end
 
-  def record_guess(new_hash)
-    value = new_hash[:value]
-    suit = new_hash[:suit]
-    response = "#{value} of #{suit}"
-    guess = Guess.new(response, current_card)
+  def record_guess(new_card)
+    guess = Guess.new("#{new_card[:value]} of #{new_card[:suit]}", current_card)
     @guesses << guess
     check_guess(guess)
+    @deck.cards = @deck.cards.rotate
     guess
-    binding.pry
   end
 
   def check_guess(guess)
@@ -32,10 +27,10 @@ class Round
     end
       @number_correct
   end
-  # def percent_correct
-  #   ((@number_correct.to_f / guesses.count) * 100).round(1)
-  #
-  # end
+  def percent_correct
+    ((@number_correct.to_f / @guesses.count) * 100).round(1)
+#binding.pry 
+  end
 
 
 end
