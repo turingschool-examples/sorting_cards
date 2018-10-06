@@ -141,13 +141,46 @@ class DeckTest < Minitest::Test
 
   def test_it_merges_to_sorted_when_sorted_is_not_empty_ascending
     sorted = [@card_3]
-    array_a = [@card_3, @card_2]
-    array_b = [@card_4, @card_5]
+    array_a = [@card_2, @card_4]
+    array_b = [@card_5, @card_1]
     direction = {reverse: false}
 
-    expected = [@card_4, @card_5, @card_2, @card_3]
+    expected = [@card_3, @card_2, @card_5, @card_4, @card_1]
     sorted = @deck.push_or_merge_to_sorted(sorted, array_a, array_b, direction)
 
+    assert_equal expected, sorted
+  end
+
+  def test_it_merges_to_sorted_when_sorted_is_not_empty_descending
+    sorted = [@card_1]
+    array_a = [@card_4, @card_5]
+    array_b = [@card_2, @card_3]
+    direction = {reverse: true}
+
+    expected = [@card_1, @card_4, @card_5, @card_2, @card_3]
+    sorted = @deck.push_or_merge_to_sorted(sorted, array_a, array_b, direction)
+
+    assert_equal expected, sorted
+  end
+  # The following two tests cases - input arrays are pre-sorted
+  # but card values are not adjacent (2 < king but 10 is in between those two)
+  def test_it_sorts_two_arrays_of_mismatching_lengths_into_one_ascending
+    array_a = [@card_3, @card_4]
+    array_b = [@card_2, @card_5, @card_1]
+    direction = {reverse: false}
+
+    expected = [@card_3, @card_2, @card_5, @card_4, @card_1]
+    sorted = @deck.sort_into_one(array_a, array_b, direction)
+    assert_equal expected, sorted
+  end
+
+  def test_it_sorts_two_arrays_of_mismatching_lengths_into_one_descending
+    array_a = [@card_1, @card_5]
+    array_b = [@card_4, @card_2, @card_3]
+    direction = {reverse: true}
+
+    expected = [@card_1, @card_4, @card_5, @card_2, @card_3]
+    sorted = @deck.sort_into_one(array_a, array_b, direction)
     assert_equal expected, sorted
   end
 
