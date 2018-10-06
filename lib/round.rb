@@ -14,8 +14,9 @@ class Round
      end
 
      def record_guess(new_guess)
-       @guesses << Guess.new(@current_card, new_guess)
-       return guesses.last
+       current_guess = Guess.new(@current_card, new_guess)
+       @guesses << current_guess
+       return current_guess
      end
 
      def correct?
