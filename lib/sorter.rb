@@ -3,27 +3,29 @@ require 'pry'
 
 class Sorter
 
+  VALUES_SORT_ORDER = {"2" => 0, "3" => 1, "4" => 2, "5" => 3, "6" => 4,
+                      "7" => 5, "8" => 6, "9" => 7, "10" => 8, "Jack" => 9,
+                      "Queen" => 10, "King" => 11, "Ace" => 12}
+  SUITS_SORT_ORDER = {"Clubs" => 0, "Diamonds" => 1,
+                      "Hearts" => 2, "Spades" => 3}
+
   def initialize(cards)
     @cards = cards
   end
 
-  def value_deck
-    values_sort_order = {"2" => 0, "3" => 1, "4" => 2, "5" => 3, "6" => 4,
-                        "7" => 5, "8" => 6, "9" => 7, "10" => 8, "Jack" => 9,
-                        "Queen" => 10, "King" => 11, "Ace" => 12}
-    suits_sort_order = {"Clubs" => 0, "Diamonds" => 1,
-                        "Hearts" => 2, "Spades" => 3}
-
-    cards_values = {}
+  def score_deck
+    # Assigns each Card a "score" array and stores it with the
+    # Card in cards_scores hash.
+    cards_scores = {}
     @cards.each do |card|
-      cards_values[card] = [values_sort_order[card.value],
-                            suits_sort_order[card.suit]]
+      cards_scores[card] = [VALUES_SORT_ORDER[card.value],
+                            SUITS_SORT_ORDER[card.suit]]
     end
-    return cards_values
+    return cards_scores
   end
 
   def sort
-    cards_values = value_deck
+    cards_values = score_deck
     sorted_cards = []
     # .first creates array of [Card, [value score, suit score]]
     smallest_card = cards_values.first

@@ -25,14 +25,11 @@ class SorterTest < Minitest::Test
   def test_it_values_deck
     values = {@card_1 => [2, 2], @card_2 => [12, 3], @card_3 => [3, 1],
               @card_4 => [9, 0], @card_5 => [12, 1]}
-    assert_equal values, @sorter.value_deck
+    assert_equal values, @sorter.score_deck
   end
 
   def test_it_sorts
     assert_equal [@card_1, @card_3, @card_4, @card_5, @card_2], @deck.sort
   end
-
-
-
 
 end

@@ -4,6 +4,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card'
 require './lib/deck'
+require './lib/sorter'
 require 'pry'
 
 class GuessTest < Minitest::Test
@@ -28,14 +29,15 @@ class GuessTest < Minitest::Test
     assert_equal 3, @deck.count
   end
 
-  def test_it_can_value_cards
-    @deck.value_cards
-    assert_equal [], @deck.value_cards
-  end
-
-
   def test_it_sorts
-    assert_equal [], @deck.sort
+    card_1 = Card.new("3", "Hearts")
+    card_2 = Card.new("4", "Clubs")
+    card_3 = Card.new("5", "Diamonds")
+    card_4 = Card.new("Jack", "Clubs")
+    cards = [card_2, card_3, card_4, card_1]
+    deck = Deck.new(cards)
+
+    assert_equal [card_1, card_2, card_3, card_4], deck.sort
   end
 
 

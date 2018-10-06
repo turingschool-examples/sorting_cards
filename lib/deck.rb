@@ -13,9 +13,7 @@ class Deck
   end
 
   def sort
-    sorter = Sorter.new(@cards)
-    sorter.value_deck
-    sorter.sort
+    Sorter.new(@cards).sort
   end
 
 
