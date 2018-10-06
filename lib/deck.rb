@@ -23,8 +23,8 @@ class Deck
       sorted_oa_value_and_card = bubble_sort(sort_setup)
     when "merge sort"
       sorted_oa_value_and_card = merge_sort(sort_setup)
-    when "BRUTE FORCE!!!" # do not use on more than 11 cards!
-      sorted_oa_value_and_card = brute_sort(sort_setup)
+    when "bogo sort" # do not use on more than 11 cards!
+      sorted_oa_value_and_card = bogo_sort(sort_setup)
     end
     sort_teardown(sorted_oa_value_and_card)
   end
@@ -35,7 +35,7 @@ class Deck
     end
   end
 
-  def brute_sort(sorted_oa_value_and_card) # do not use for more than 11 cards
+  def bogo_sort(sorted_oa_value_and_card) # do not use for more than 11 cards
     sorted_oa_value_and_card.permutation do |perm|
       if correct_order? perm
         return perm
@@ -127,5 +127,5 @@ class Deck
     end
     merged_list
   end
-  
+
 end

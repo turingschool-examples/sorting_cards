@@ -51,7 +51,7 @@ class DeckTest < Minitest::Test
     # do not run for more than 11 cards; runs O(n!) worst case
     sorted_deck = [@card_3, @card_5, @card_2, @card_6, @card_4,
       @card_9, @card_7, @card_8, @card_1]
-    assert_equal sorted_deck, @deck.sort("BRUTE FORCE!!!")
+    assert_equal sorted_deck, @deck.sort("bogo sort")
   end
 
   def test_it_can_setup_for_sort
