@@ -4,7 +4,7 @@ require './lib/card'
 require './lib/guess'
 require './lib/deck'
 require './lib/round'
-
+require 'pry'
 class RoundTest < Minitest::Test
   def setup
     @card_1 = Card.new("3","Hearts")
@@ -31,14 +31,28 @@ class RoundTest < Minitest::Test
 
   def test_it_can_record_test
     new_guess = @round.record_guess({value: "3", suit: "Hearts"})
-    #expected =
     assert_instance_of Guess, new_guess
-    expected = @round.guesses.last
-    actual = new_guess
+    actual = @round.guesses.last
+    expected = new_guess
     assert_equal expected, actual
+    assert_equal true, new_guess.correct?
     #test to make sure rotating the deck
   end
 
+  def test_it_has_guesses
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal [new_guess], @round.guesses
+  end
 
+  def test_it_records_the_number_of_correct_guesses
+    assert_equal 0, @round.number_correct
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal 1 , @round.number_correct
+  end
+
+  def test_it_can_rotate
+    skip
+    assert_equal
+  end
 
 end
