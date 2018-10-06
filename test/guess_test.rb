@@ -32,10 +32,23 @@ class GuessTest < Minitest::Test
   # interpolate card value & suit
   end
 
+  def test_guess_incorrect
+    card = Card.new("Queen", "Clubs")
+    guess = Guess.new("2 of Diamonds", card)
+    assert_equal false, guess.correct?
+  end
+#guess false is possible
   def test_guess_results_in_feedback
     card = Card.new("10", "hearts")
     guess = Guess.new("10 of hearts", card)
-    refute_nil guess.feedback
+    assert_equal "Correct!", guess.feedback
   # test .feedback
   end
+
+  def test_results_in_alternate_feedback
+    card = Card.new("Queen", "Clubs")
+    guess = Guess.new("2 of Diamonds", card)
+    assert_equal "Incorrect.", guess.feedback
+  end 
+  # test alternate feedback
 end
