@@ -8,6 +8,10 @@ class Deck
     cards.count
   end
 
+  ## ==========
+  # bubble sort and helper methods
+  ## ==========
+
   def sort(sort_direction = {reverse: false})
     sorted = false
     until sorted
@@ -24,57 +28,6 @@ class Deck
     end
   end
 
-  def merge_sort(array, sort_direction = {reverse: false})
-    array_a, array_b, sorted = [], [], []
-    until array.empty?
-      n = array.length
-
-      if n >= 4
-        array_a, array_b = split_array(array)
-        sorted = sort_into_one(array_a, array_b)
-      elsif n == 3
-        array_a = sort_array(array.slice!(0, 2))
-        array_b = array[0]
-        sorted = sort_into_one(array_a, array_b)
-      elsif n == 2
-        array_a = sort_array(array)
-        sorted = sort_into_one(sorted, array_a)
-      else
-        sorted = sort_into_one(sorted, array)
-      end
-    end
-
-  end
-
-  def sort_into_one(array_a, array_b)
-    sorted = []
-    until array_a.empty? && array_b.empty?
-      if array_a[0] <= array_b[0]
-        sorted.push(array_a.slice!(0,1))
-      else
-        sorted.push(array_b.slice!(0,1))
-      end
-    end
-    sorted
-  end
-
-  def split_array(array)
-    array_a = sort_array(array.slice!(0,2))
-    array_b = sort_array(array.slice!(0,2))
-
-    return array_a, array_b
-  end
-
-  def sort_array(array)
-    sorted = []
-    if array[0] <= array[1]
-      sorted[0], sorted[1] = array[0], array[1]
-    else
-      sorted[0], sorted[1] = array[1], array[0]
-    end
-    sorted
-  end
-
   def check_for_swap(i, reverse = false)
     if reverse
       if cards[i] < cards[i+1]
@@ -87,4 +40,96 @@ class Deck
     end
   end
 
+  ## ==========
+  # merge sort and helper methods
+  ## ==========
+
+  def merge_sort(array, sort_direction = {reverse: false})
+    array_a, array_b, sorted = [], [], []
+    return "Use another method" if array.length < 3
+    until array.empty?
+      n = array.length
+
+      if n >= 4
+        array_a, array_b = split_array(array)
+        sorted = push_or_merge_to_sorted(sorted, array_a, array_b, sort_direction)
+      elsif n == 3
+        array_a = sort_array(array.slice!(0, 2), sort_direction)
+        array_b = array[0]
+        sorted = push_or_merge_to_sorted(sorted, array_a, array_b, sort_direction)
+      elsif n == 2
+        array_a = sort_array(array, sort_direction)
+        sorted = sort_into_one(sorted.flatten, array_a, sort_direction)
+      else
+        sorted.push(array.slice!(0,1))
+      end
+    end
+    sorted.flatten
+  end
+
+  def push_or_merge_to_sorted(sorted, array_a, array_b, sort_direction)
+    if sorted.empty?
+      sorted << sort_into_one(array_a, array_b, sort_direction)
+    else
+      new_sorted = sort_into_one(array_a, array_b, sort_direction)
+      sorted = sort_into_one(sorted.flatten, new_sorted.flatten, sort_direction)
+    end
+    sorted
+  end
+
+  def sort_into_one(array_a, array_b, sort_direction)
+    sorted = []
+    until array_a.empty? || array_b.empty?
+      if sort_direction[:reverse]
+        if array_a[0] >= array_b[0]
+          sorted.push(array_a.slice!(0,1))
+        else
+          sorted.push(array_b.slice!(0,1))
+        end
+      else
+        if array_a[0] <= array_b[0]
+          sorted.push(array_a.slice!(0,1))
+        else
+          sorted.push(array_b.slice!(0,1))
+        end
+      end
+    end
+
+    remaining_array = array_a.empty? ? array_b : array_a
+    sorted = push_or_recursively_sort(sorted, remaining_array)
+    sorted
+  end
+
+  def push_or_recursively_sort(sorted, remaining_array, sort_direction)
+    if remaining_array.length > 1
+      sorted = sort_into_one(sorted.flatten, remaining_array.flatten)
+    elsif remaining_array.length == 1
+      sorted.push(remaining_array[0])
+    end
+    sorted.flatten
+  end
+
+  def split_array(array)
+    array_a = sort_array(array.slice!(0,2))
+    array_b = sort_array(array.slice!(0,2))
+    return array_a, array_b
+  end
+
+  def sort_array(array, sort_direction)
+    sorted = []
+    if sort_direction[:reverse]
+      if array[0] >= array[1]
+        sorted[0], sorted[1] = array[0], array[1]
+      else
+        sorted[0], sorted[1] = array[1], array[0]
+      end
+    else
+      if array[0] <= array[1]
+        sorted[0], sorted[1] = array[0], array[1]
+      else
+        sorted[0], sorted[1] = array[1], array[0]
+      end
+    end
+    sorted
+  end
 end
