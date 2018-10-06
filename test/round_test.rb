@@ -6,7 +6,7 @@ require './lib/guess'
 require './lib/round'
 require 'pry'
 
-class DeckTest < Minitest::Test
+class RoundTest < Minitest::Test
   def setup
     @card_1 = Card.new("3", "Hearts")
     @card_2 = Card.new("4", "Clubs")
@@ -36,9 +36,33 @@ class DeckTest < Minitest::Test
     assert_equal new_guess, @round.guesses[0]
   end
 
-  #def test_it_evaluates_correct_guesses
+  def test_it_evaluates_correct_guesses
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal 1, @round.number_correct
+  end
 
+  def test_it_returns_current_card_after_record_guess
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal @card_2, @round.current_card
+  end
 
+  def test_it_records_multiple_guesses
+    @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal 2, @round.guesses.count
+  end
 
+  def test_it_provides_proper_feedback_for_items_in_round
+    @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal "Incorrect.", @round.guesses.last.feedback
+  end
 
-end #DeckTest Class
+  def test_it_provides_proper_round_results
+    @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal 1, @round.number_correct
+    assert_equal 50.0, @round.percent_correct
+  end
+
+end #RoundTest Class
