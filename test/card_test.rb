@@ -17,4 +17,10 @@ class CardTest < Minitest::Test
     card = Card.new("Ace", "Spades")
     assert_equal "Spades", card.suit
   end
+
+  def test_actual_value_returns_correct
+    card = Card.new("Ace", "Spades")
+
+    assert_equal 504, card.actual_value
+  end
 end
