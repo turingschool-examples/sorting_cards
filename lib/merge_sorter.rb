@@ -20,7 +20,7 @@ class MergeSorter
     end
   end
 
-  def merge_sort_and_resolve
+  def merge_sort_return_cards
     merged_cards = merge_sort(@cards)
     merged_cards.map do|card|
       card[0]

@@ -28,11 +28,6 @@ class MergeSorterTest < Minitest::Test
     assert_equal scored_cards, @merge_sorter.score_cards(@cards)
   end
 
-  def test_it_merge_sorts_cards
-    expected = [@card_1, @card_3, @card_4, @card_5, @card_2]
-    assert_equal expected, @merge_sorter.merge_sort_and_resolve
-  end
-
   def test_it_merges_cards
     merge_sorter = MergeSorter.new([@card_3, @card_1, @card_4, @card_5])
     expected = [[@card_1, 2.2], [@card_3, 3.1], [@card_4, 9.0],
@@ -50,8 +45,12 @@ class MergeSorterTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_it_merge_sorts_cards
+    expected = [@card_1, @card_3, @card_4, @card_5, @card_2]
+    assert_equal expected, @merge_sorter.merge_sort_return_cards
+  end
 
-  def test_it_sorts # use deck for this?
+  def test_it_sorts_from_deck_class
     deck = Deck.new(@cards)
     expected = [@card_1, @card_3, @card_4, @card_5, @card_2]
 

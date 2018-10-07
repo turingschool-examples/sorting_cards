@@ -63,9 +63,4 @@ class GuessTest < Minitest::Test
     assert_equal [card_1, card_3, card_4, card_5, card_2], deck.merge_sort
   end
 
-
-
-
-
-
 end
