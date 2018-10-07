@@ -1,23 +1,10 @@
-require 'pry'
+require './lib/score_cards'
 
 class MergeSorter
-
-  VALUES_SORT_ORDER = {"2" => 0, "3" => 1, "4" => 2, "5" => 3, "6" => 4,
-                      "7" => 5, "8" => 6, "9" => 7, "10" => 8, "Jack" => 9,
-                      "Queen" => 10, "King" => 11, "Ace" => 12}
-  SUITS_SORT_ORDER = {"Clubs" => 0, "Diamonds" => 1,
-                      "Hearts" => 2, "Spades" => 3}
+  include ScoreCards
 
   def initialize(cards)
     @cards = score_cards(cards)
-  end
-
-  def score_cards(cards)
-    cards.map do |card|
-      value_score = VALUES_SORT_ORDER[card.value]
-      suit_score = SUITS_SORT_ORDER[card.suit]
-      [card, "#{value_score}.#{suit_score}".to_f]
-    end
   end
 
   def merge_sort_return_cards
@@ -26,7 +13,6 @@ class MergeSorter
       card[0]
     end
   end
-
 
   def merge_sort(cards)
 
