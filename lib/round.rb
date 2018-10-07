@@ -8,9 +8,9 @@ class Round
   def current_card
     gueeses.at(0)
   end
-  # def record_guess
-  #
-  # end
+  def record_guess
+    #study Hashes
+  end
 
 
 
