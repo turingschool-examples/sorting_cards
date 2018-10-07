@@ -25,11 +25,18 @@ class Deck
     true
   end
 
+  def switch(array, position_one, position_two)
+    x = array[position_one]
+    y = array[position_two]
+    array[position_one] = y
+    array[position_two] = x
+  end
+
   def sort
     until sorted?(@cards)
-      (@cards.length - 1).times do |card|
+       (@cards.length - 1).times do |card|
         if @cards[card].valuation > @cards[card+1].valuation
-          @cards[card], @cards[card+1] = @cards[card+1], @cards[card]
+          switch(@cards, card, (card + 1))
         end
       end
     end
