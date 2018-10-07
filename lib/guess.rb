@@ -1,14 +1,16 @@
+require_relative 'card'
 class Guess
-  attr_reader :card, :guess
+  attr_reader :card, :guess, :guessed_card
 
   def initialize(string, card)
     @guess = string
     @card = card
+    arr = response.split
+    @guessed_card = Card.new(arr[0], arr[-1])
   end
 
   def correct?
-    arr = response.split
-    card.value == arr[0] && card.suit == arr[-1]
+     card.value == guessed_card.value && card.suit == guessed_card.suit
   end
 
   def feedback

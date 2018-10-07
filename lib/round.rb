@@ -37,13 +37,19 @@ class Round
 
   #Command Methods
   def record_guess(args)
-    new_guess = Guess.new("#{args[:value]} of #{args[:suit]}", current_card)
+    response = args.is_a?(Hash) ? "#{args[:value]} of #{args[:suit]}" : args
+
+    new_guess = Guess.new(response, current_card)
     @@guesses << new_guess
     new_guess
   end
 
   def clear_guesses
     @@guesses = []
+  end
+
+  def reset
+    @@deck.shuffle!
   end
 
 end
