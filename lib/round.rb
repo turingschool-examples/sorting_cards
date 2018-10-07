@@ -1,5 +1,4 @@
 require './lib/guess'
-require 'pry'
 
 class Round
   attr_reader :deck, :guesses, :number_correct

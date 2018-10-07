@@ -2,15 +2,15 @@ class Deck
   attr_reader :cards
 
   def initialize(cards)
+    if !cards.kind_of?(Array) 
+      raise ArgumentError.new('Cards must be an array!')
+    end  
+
     @cards = cards
   end
 
   def count
-    if cards.kind_of?(Array)
-      @cards.count
-    else
-      "Error: deck.cards is not an Array"
-    end
+    @cards.count
   end
 
   def sort

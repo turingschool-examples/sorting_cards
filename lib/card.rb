@@ -1,6 +1,18 @@
 class Card
   attr_reader :value, :suit, :card_weight
 
+  def initialize(value, suit)
+    [value, suit].each do |arg|
+      if !arg.kind_of?(String) 
+        raise ArgumentError.new('Both arguments must be a string.')
+      end 
+    end
+
+    @suit = suit.downcase
+    @value = value.downcase
+    @card_weight = calculate_total_weight(@value, @suit)
+  end
+
   def calculate_value_weight(value)
     value_weights = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace"]
     matching_value_weight = nil
@@ -32,12 +44,5 @@ class Card
     suit_weight = calculate_suit_weight(suit)
 
     "#{value_weight}.#{suit_weight}".to_f
-  end
-
-
-  def initialize(value, suit)
-    @suit = suit.downcase
-    @value = value.downcase
-    @card_weight = calculate_total_weight(@value, @suit)
   end
 end
