@@ -5,16 +5,13 @@ require './lib/deck'
 
 
 class Round
-    attr_reader :deck, :current_card, :guesses, :current_guess, :correct, :incorrect, :number_correct, :number_incorrect
+    attr_reader :deck, :current_card, :guesses, :current_guess, :number_correct, :number_incorrect
      def initialize(deck)
        @deck = deck
        @guesses = []
        @current_card = deck.cards.shift
-       @current_guess = current_guess
-       @correct = 0
-       @incorrect = 0
-       @number_correct = number_correct
-       @number_incorrect = number_incorrect
+       @number_correct = 0
+       @number_incorrect = 0
 
 
      end
@@ -24,10 +21,11 @@ class Round
        @guesses << current_guess
 
 
-       if @guesses.last.correct? == true
-         @correct += 1
+       if current_guess.correct?
+
+         @number_correct += number_correct+ 1
        else
-         @incorect += 1
+         @number_incorrect += 1
        end
 
        return current_guess
