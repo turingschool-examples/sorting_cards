@@ -3,6 +3,7 @@ require 'minitest/pride'
 require './lib/card'
 require './lib/deck'
 require './lib/round'
+require './lib/guess'
 
 class RoundTest < Minitest::Test
 
@@ -62,26 +63,40 @@ class RoundTest < Minitest::Test
 
   end
 
+  def test_guesses_are_being_recorded
+
+    card_1 = Card.new("3","Hearts")
+    card_2 = Card.new("4", "Clubs")
+    card_3 = Card.new("5", "Diamonds")
+    deck = Deck.new([card_1, card_2, card_3])
+    round = Round.new(deck)
+    new_guess = round.record_guess({value: "3", suit: "Hearts"})
+
+    assert_equal new_guess, round.guesses.last
+
+  end
+
+  def test_guesses_can_be_counted
+
+    card_1 = Card.new("3","Hearts")
+    card_2 = Card.new("4", "Clubs")
+    card_3 = Card.new("5", "Diamonds")
+    deck = Deck.new([card_1, card_2, card_3])
+    round = Round.new(deck)
+    new_guess = round.record_guess({value: "3", suit: "Hearts"})
+    require 'pry'
+    binding.pry
+    assert_equal 1, new_guess.number_correct
+
+  end
 end
 
 
-
-
-
-# new_guess.class
-# #=> Guess
-# binding.pry
-#
-# new_guess.correct?
-# #=> true
-# binding.pry
-#
-# round.guesses
-# #=> [#<Guess:0x00007f972a15c160 @card=#<Card:0x00007f972a227f18 @suit="Hearts", @value="3">, @response="3 of Hearts">]
-# binding.pry
 # round.number_correct
 # #=> 1
 # binding.pry
+
+
 # round.current_card
 # #=> #<Card:0x00007f9729a87998 @suit="Clubs", @value="4">
 # binding.pry
