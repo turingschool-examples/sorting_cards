@@ -17,6 +17,8 @@ class FunGuessingGame < UI
   DIFF_SUIT_HINTS = ["Wrong suit.", "That card doesn't suit me."].shuffle.cycle
 
 
+
+
   def self.run
     setup
     welcome
@@ -27,7 +29,7 @@ class FunGuessingGame < UI
 
   def self.repl
     while true
-      print "> "; input = gets.chomp
+      input = Readline.readline("> ", true)
       break if UI::EXITKEYWORDS.include?(input)
       binding.pry if input == "pry"
       print_options if input == 'o'
@@ -49,17 +51,24 @@ class FunGuessingGame < UI
     @deck = StandardPlaying.new()
     @deck.shuffle!
     @round = Round.new(@deck)
-    setup_possible_responses
-
+    setup_auto_complete
   end
 
-  def self.setup_possible_responses
-    @possible_responses = []
-    SUITS.each do |suit|
-      VALUES.each do |value|
-        @possible_responses << "#{value} of #{suit}"
-      end
+  def self.setup_auto_complete
+    setup_responses_arr
+    card_completer = proc { |s| @responses_arr.grep(/^#{Regexp.escape(s)}/) }
+    Readline.completion_append_character = ""
+    Readline.completion_proc = card_completer
+  end
+
+  def self.setup_responses_arr
+    @responses_arr = []
+    VALUES.each do |value|
+      @responses_arr << "#{value} of "
     end
+    @responses_arr += SUITS
+
+
   end
 
 
@@ -81,8 +90,12 @@ class FunGuessingGame < UI
     puts "Enter 'exit' 'exit!' 'quit' '!!!' or 'q' to leave.\n\n"
   end
 
+  def self.random_card
+    "#{VALUES.sample} of #{SUITS.sample}"
+  end
+
   def self.ask_for_valid
-    puts "I'm looking for cards. Something like #{@possible_responses.sample} or #{@possible_responses.sample}."
+    puts "I'm looking for cards. Something like #{random_card} or #{random_card}."
   end
 
   def self.respond_to_guess(info)
@@ -107,10 +120,10 @@ class FunGuessingGame < UI
     else
       puts "It took you #{i} guesses, but you got it!"
     end
-    puts "Want to play another round?
-  Too late, I already picked another card.
-  It could be any card, except for the ones I've already picked.
-  Can you guess?"
+    puts "Want to play another round?"
+    puts "Too late, I already picked another card."
+    puts "It could be any card, except for the ones I've already picked."
+    puts "Can you guess?"
   end
 
   #evaluation methods
