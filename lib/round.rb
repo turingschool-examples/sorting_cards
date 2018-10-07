@@ -1,13 +1,18 @@
 require_relative 'guess'
 
 class Round
-  attr_reader :guesses
+  attr_reader :num_guesses
 
   @@deck = []
   @@guesses = []
 
   def initialize(deck = nil)
-    @@deck = deck if deck
+    @num_guesses = 0
+     if deck
+       @@deck = deck
+     else
+       @@deck.cards.rotate!
+     end
   end
 
   #Query methods
@@ -28,18 +33,28 @@ class Round
   end
 
   def percent_correct
-    (number_correct * 100.0 / @@guesses.size.to_f).round(1)
+    if @@guesses.size > 0
+      (number_correct * 100.0 / @@guesses.size.to_f).round(1)
+    else
+      0
+    end
   end
 
   #Command Methods
   def record_guess(args)
-    new_guess = Guess.new("#{args[:value]} of #{args[:suit]}", current_card)
-    @@guesses << new_guess
+    response = args.is_a?(Hash) ? "#{args[:value]} of #{args[:suit]}" : args
+
+    new_guess = Guess.new(response, current_card)
+    @@guesses << new_guess; @num_guesses += 1
     new_guess
   end
 
   def clear_guesses
     @@guesses = []
+  end
+
+  def reset
+    @@deck.shuffle!
   end
 
 end

@@ -39,7 +39,7 @@ class TestIncorrect < GuessTest
 
   def setup
     @card = Card.new("Queen", "Clubs")
-    @guess = Guess.new("Two of Diamonds", @card)
+    @guess = Guess.new("2 of Diamonds", @card)
   end
 
   def test_correct_return_false
