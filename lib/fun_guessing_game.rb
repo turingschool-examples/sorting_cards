@@ -1,14 +1,13 @@
 require_relative 'ui'
 require_relative 'standard_playing'
 require_relative 'round'
+require_relative 'evaluation'
 require 'readline'
 require'pry'
 
 
 class FunGuessingGame < UI
 
-  VALUES = Card::FACECARDS.keys + (2..10).map(&:to_s).to_a
-  SUITS = Card::SUITDEC.keys
   CORRECT_REACTIONS = ["Isn't this game fun?", "Are you psychic?", "Incredible!"].shuffle.cycle
   INCORRECT_REACTIONS = ["Not it.", "Not the card I was thinking of.", "Nope."].shuffle.cycle
   TOO_LOW_HINTS = ["Why so low?", "Think bigger."].shuffle.cycle
@@ -33,13 +32,13 @@ class FunGuessingGame < UI
       break if UI::EXITKEYWORDS.include?(input)
       binding.pry if input == "pry"
       print_options if input == 'o'
-      if valid_response?(input)
+      if Evaluation.valid_response?(input)
         new_guess = @round.record_guess(input)
         if new_guess.correct?
           respond_to_correct; print_round_stats
           @round = Round.new
         else
-          respond_to_guess(evaluate_wrong_guess(new_guess))
+          respond_to_guess(Evaluation.evaluate_wrong_guess(new_guess))
         end
       else
         ask_for_valid
@@ -67,10 +66,10 @@ class FunGuessingGame < UI
 
   def self.setup_responses_arr
     @responses_arr = []
-    VALUES.each do |value|
+    StandardPlaying::VALUES.each do |value|
       @responses_arr << "#{value} of "
     end
-    @responses_arr += SUITS
+    @responses_arr += StandardPlaying::SUITS
 
 
   end
@@ -95,7 +94,7 @@ class FunGuessingGame < UI
   end
 
   def self.random_card
-    "#{VALUES.sample} of #{SUITS.sample}"
+    "#{StandardPlaying::VALUES.sample} of #{StandardPlaying::SUITS.sample}"
   end
 
   def self.ask_for_valid
@@ -126,42 +125,11 @@ class FunGuessingGame < UI
     end
     puts "Want to play another round?"
     puts "Too late, I already picked another card."
-    puts "It could be any card, except for the ones I've already picked."
+    puts "It could be any card, except for ones I've picked in previous rounds."
     puts "Can you guess?"
   end
 
   #evaluation methods
-  def self.evaluate_wrong_guess(guess)
-    info = {}
-    info[:value] = evaluate_value(guess)
-    info[:suit] = evaluate_suit(guess)
-    info
-  end
 
-  def self.evaluate_value(guess)
-    gval, cval = guess.g_card.to_f.round, guess.card.to_f.round
-    return :same if gval == cval
-    return :high if gval > cval
-    return :low
-  end
-
-  def self.evaluate_suit(guess)
-    gsuit, csuit = guess.g_card.suit, guess.card.suit
-    return :same if gsuit == csuit
-    return :same_color if same_color?(gsuit, csuit)
-    return :diff_color
-  end
-
-  def self.same_color?(suit1, suit2)
-    color = %w(Clubs Hearts Diamonds Spades).zip([:b,:r,:r,:b]).to_h
-    color[suit1] == color[suit2]
-  end
-
-
-  def self.valid_response?(input)
-    a = input.split
-
-    VALUES.include?(a[0]) && "of" == a[1] && SUITS.include?(a[2])
-  end
 
 end
