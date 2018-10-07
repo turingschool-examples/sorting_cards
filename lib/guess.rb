@@ -12,10 +12,7 @@ class Guess
 
   def correct?
     #.split separated the @guess values into an array, and we assigned that array to the variable guess_keywords
-   # return true if build_card_response == @response
-   # return false if build_card_response != @response
-   # or try shorthand with the ternary operator:
-   build_card_response == @response ? true : false
+   build_card_response == @response
   end
 
   def feedback
@@ -23,7 +20,7 @@ class Guess
     #   "Correct!"
     # else
     #   "Incorrect."
-    correct? == true ? "Correct!" : "Incorrect."
+    correct? ? "Correct!" : "Incorrect."
     # end
   end
 
