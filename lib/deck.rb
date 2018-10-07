@@ -17,7 +17,7 @@ class Deck
   end
 
   def merge_sort
-    MergeSorter.new(@cards).merge_sort_and_resolve
+    MergeSorter.new(@cards).merge_sort_return_cards
   end
 
 end
