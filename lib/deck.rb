@@ -1,8 +1,10 @@
 class Deck
-  attr_reader :cards
+  attr_reader :cards,
+              :sort
 
   def initialize(cards)
     @cards = cards
+    @sort = sort
   end
 
   def count
