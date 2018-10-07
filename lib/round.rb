@@ -1,4 +1,5 @@
 require './lib/guess'
+require './lib/card'
 
 class Round
   attr_reader :guesses, :deck, :current_card
@@ -6,6 +7,7 @@ class Round
     @deck = deck
     @guesses = []
     @current_card = deck.cards.shift
+    @first_card = @current_card
   end
 
   def next_card
@@ -13,15 +15,17 @@ class Round
   end
 
   def record_guess(card_hash)
-    guessCard = Card.new(card_hash[:value], card_hash[:suit]).to_s
-    guess = Guess.new(guessCard, current_card)
-    guesses << guess
+    value = card_hash[:value]
+    suit = card_hash[:suit]
+    guessString = Card.new(value, suit).to_s
+    guess = Guess.new(guessString, current_card)
+    @guesses << guess
     next_card
     guess
   end
 
   def number_correct
-    guesses.count(&:correct?)
+    @guesses.count(&:correct?)
   end
 
   def percent_correct

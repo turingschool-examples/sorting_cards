@@ -9,20 +9,39 @@ class Deck
   end
 
   def sort
-    sortBubbleRank(@cards)
+    Deck.sortBubbleRank(@cards)
   end
 
-  def sortBubbleRank(array)
-    0.upto(array.size - 2) do |i|
-      bool = swap(array, i, i + 1) if array[i].rank > array[i + 1].rank
+  def shuffle!
+    @cards.shuffle!
+  end
+
+  def shuffle
+    @cards.shuffle
+  end
+
+  class << self
+    def sortBubbleRank(array)
+      loop do
+        bool = false
+        0.upto(array.size - 2) do |i|
+          if array[i].rank > array[i + 1].rank
+            swap(array, i, i + 1)
+            bool = true
+          end
+        end
+        break unless bool
+      end
+      array
     end
-  end
 
-  def swap(array, index1, index2)
-    one = array[index1]
-    two = array[index2]
-    array[index1] = two
-    array[index2] = one
-    array
+    def swap(array, index1, index2)
+      one = array[index1]
+      two = array[index2]
+      array[index1] = two
+      array[index2] = one
+    end
+
+    def sortMerge(array); end
   end
 end

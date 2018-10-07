@@ -18,7 +18,7 @@ class Guess
     if @correct
       'Correct!'
     else
-      'Incorrect!'
+      'Incorrect.'
     end
   end
 end
