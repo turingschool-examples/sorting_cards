@@ -7,8 +7,18 @@
   1. Don't need an else statement - then it will just move to the next iteration which is what we want.
   1. This whole iteration will find the smallest card in the deck. At the end of this - the Card gets <<'d on to the sorted_cards array. THEN we have to repeat!
 
+____________________
+## Merge Sort
+1. Need to translate cards into something sortable. - Use floats.
+1. Array of arrays? Each array contains [[card1, sort-order], [card2, sort-order], etc].
+
+
+
 ----------------
 ### Questions/To Do
 1. The values_sort_order should be constants. Read up on how these are defined. All caps? >> Done. All caps, outside the method.
 1. Suits are sorted alphabetically. Can we simplify this somehow? Not need the suits_sort_order?
 1. Combine the value + suit score into one by making the suit the decimal point e.g. 2 of Clubs is 0.0, 2 of Hearts is 0.2. Then can compare in one score and don't need to separate out suit.
+1. Look at all instances of .each. Could use .map or other?
+1. Go through methods. Does each have a single responsibility that can be described concisely?
+1. Research unit vs integration testing in minitest
