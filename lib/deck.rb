@@ -41,7 +41,5 @@ class Deck
       array[index1] = two
       array[index2] = one
     end
-
-    def sortMerge(array); end
   end
 end

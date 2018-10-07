@@ -15,9 +15,7 @@ class Round
   end
 
   def record_guess(card_hash)
-    value = card_hash[:value]
-    suit = card_hash[:suit]
-    guessString = Card.new(value, suit).to_s
+    guessString = Card.new(card_hash[:value], card_hash[:suit]).to_s
     guess = Guess.new(guessString, current_card)
     @guesses << guess
     next_card
