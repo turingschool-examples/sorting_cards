@@ -8,8 +8,8 @@ class MergeSorter
   end
 
   def merge_sort_return_cards
-    merged_cards = merge_sort(@cards)
-    merged_cards.map do|card|
+    sorted_cards = merge_sort(@cards)
+    sorted_cards.map do|card|
       card[0]
     end
   end
