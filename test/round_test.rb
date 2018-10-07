@@ -1,0 +1,131 @@
+require_relative 'test_helper'
+require_relative '../lib/guess'
+require_relative '../lib/card'
+require_relative '../lib/round'
+require_relative '../lib/deck'
+
+
+
+class TestRound < Minitest::Test
+  def setup
+    @deck = Deck.new [Card.new("3","Hearts"), Card.new("4", "Clubs")]
+    @round = Round.new(@deck)
+  end
+
+  def teardown
+    @round.clear_guesses
+  end
+
+  #Helper methods
+  def help_setup_2_guesses
+    @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+  end
+
+  def help_setup_3_guesses
+    @round.record_guess({value: "3", suit: "Hearts"})
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    @round.record_guess({value: "Queen", suit: "Spades"})
+  end
+
+  def help_get_random_value
+    ((1..10).to_a + %w(Jack Queen King Ace)).sample
+  end
+
+  def help_get_random_suit
+    %w(Hearts Diamonds Spades Clubs).sample
+  end
+
+  def help_set_up_n_guesses(n)
+    n.times do
+      @round.record_guess({value: help_get_random_value, suit: help_get_random_suit})
+    end
+  end
+
+  def help_test_n_guesses(n)
+    help_set_up_n_guesses(n)
+    assert_equal n, @round.guesses.count
+  end
+
+  #helper asserts
+  def assert_right_card(card, response)
+    assert_equal card.suit, response.split[-1]
+    assert_equal card.value, response.split[0]
+  end
+
+  #Tests
+  def test_it_has_guesses_array
+    assert_equal @round.guesses, []
+  end
+
+  def test_current_card_gives_first_card_initially
+    assert_right_card @round.current_card, "3 of Hearts"
+  end
+
+  def test_current_card_gives_next_card_after_new_round
+    Round.new
+    assert_right_card @round.current_card, "4 of Clubs"
+  end
+
+  def test_it_holds_random_amount_of_guesses_up_to_10
+    3.times do
+      help_test_n_guesses(rand(10))
+      teardown
+      setup
+    end
+  end
+
+  def test_it_holds_random_amount_of_guesses_up_to_1000
+    3.times do
+      help_test_n_guesses(rand(1000))
+      teardown
+      setup
+    end
+  end
+
+  def test_record_guess_returns_new_guess
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert_instance_of Guess, new_guess
+  end
+
+  def test_recorded_guess_correct
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert new_guess.correct?
+  end
+
+  def test_recorded_guess_included_in_guesses
+    new_guess = @round.record_guess({value: "3", suit: "Hearts"})
+    assert_includes @round.guesses, new_guess
+  end
+
+  def test_number_correct
+    binding.pry
+    @round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal 1, @round.number_correct
+  end
+
+  def test_feedback_returns_incorrect
+    @round.record_guess({value: "Jack", suit: "Diamonds"})
+    assert_equal "Incorrect.", @round.guesses.last.feedback
+  end
+
+  def test_number_correct
+    help_setup_2_guesses
+    assert_equal 1, @round.number_correct
+  end
+
+  def test_it_can_calc_percent_correct
+    help_setup_2_guesses
+    assert_equal 50.0, @round.percent_correct
+  end
+
+  def test_it_can_calc_percent_correct_with_repeating_decimals
+    help_setup_3_guesses
+    assert_equal 33.3, @round.percent_correct
+  end
+
+
+  #
+
+
+end
