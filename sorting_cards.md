@@ -11,3 +11,4 @@
 ### Questions/To Do
 1. The values_sort_order should be constants. Read up on how these are defined. All caps? >> Done. All caps, outside the method.
 1. Suits are sorted alphabetically. Can we simplify this somehow? Not need the suits_sort_order?
+1. Combine the value + suit score into one by making the suit the decimal point e.g. 2 of Clubs is 0.0, 2 of Hearts is 0.2. Then can compare in one score and don't need to separate out suit.
