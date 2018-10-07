@@ -56,7 +56,7 @@ class FunGuessingGame < UI
 
   def self.setup_auto_complete
     setup_responses_arr
-    card_completer = proc { |s| @responses_arr.grep(/^#{Regexp.escape(s)}/) }
+    card_completer = proc { |s| @responses_arr.grep(/^#{Regex.escape(s)}/) }
     Readline.completion_append_character = ""
     Readline.completion_proc = card_completer
   end
@@ -74,8 +74,8 @@ class FunGuessingGame < UI
 
   #print methods
   def self.welcome(timing = false)
-    puts "Welcome to Card Guessing Game,
-    \t\tthe super fun card guessing game where you guess cards!"
+    puts "Welcome to Fun Guessing Game,
+    \t\tthe card guessing game where you guess cards!"
     sleep(1) if timing
     puts "\nFirst, I, Ruby, will select a card..."
     sleep(4) if timing
