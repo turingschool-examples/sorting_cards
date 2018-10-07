@@ -13,7 +13,7 @@ class RoundTest < Minitest::Test
     # @card_3 = Card.new("5", "Diamonds")
     @cards = [@card_1, @card_2]#, @card_3]
     @deck = Deck.new(@cards)
-    @guess = Guess.new("3 of Hearts", @card_1)
+    # @new_guess = round.recordguess
   end
 
   def test_it_exists
@@ -31,7 +31,7 @@ class RoundTest < Minitest::Test
   def test_there_are_guesses
     round = Round.new(@deck)
 
-    assert_equal round.recordguess, round.guesses
+    assert_equal [], round.guesses
   end
 
   def test_current_card_works
@@ -40,12 +40,82 @@ class RoundTest < Minitest::Test
     assert_equal @card_1, round.current_card
   end
 
-  def test_that_there_is_a_new_guess
-    skip
+  def test_that_there_is_a_new_guess_and_that_it_is_correct
+    # skip
     round = Round.new(@deck)
-    guess = round.recordguess
-    assert_instance_of Guess, guess
-    assert_equal @card_1, guess.card
-    assert_equal @card_1, guess.response
+    guess1 = round.recordguess({value: "3", suit: "Hearts"})
+    assert_instance_of Guess, guess1
+    # require 'pry'; binding.pry
+    assert_equal "3 of Hearts", guess1.response
+    # require 'pry'; binding.pry
+  end
+
+  def test_the_guess_is_stored_in_the_array
+    round = Round.new(@deck)
+    guess1 = round.recordguess({value: "3", suit: "Hearts"})
+
+    assert_equal [guess1], round.guesses
+
+  end
+
+  def test_the_new_guess_is_correct
+    round = Round.new(@deck)
+    guess1 = round.recordguess({value: "3", suit: "Hearts"})
+
+    assert guess1.correct?
+  end
+
+  def test_how_many_guesses_are_correct
+    round = Round.new(@deck)
+    round.recordguess({value: "3", suit: "Hearts"})
+
+    assert_equal 1, round.number_correct
+  end
+
+
+  def test_the_current_card_is_changing
+    round = Round.new(@deck)
+
+    assert_equal @card_1, round.current_card
+    round.recordguess({value: "3", suit: "Hearts"})
+    assert_equal @card_2, round.current_card
+  end
+
+  def test_there_is_a_guess2
+    round = Round.new(@deck)
+    guess2 = round.recordguess({value: "Jack", suit: "Diamonds"})
+    assert_instance_of Guess, guess2
+  end
+
+  def test_the_number_of_guesses
+    round = Round.new(@deck)
+    round.recordguess({value: "3", suit: "Hearts"})
+    round.recordguess({value: "Jack", suit: "Diamonds"})
+
+    assert_equal 2, round.guesses.length
+  end
+
+  def test_the_last_feedback
+    round = Round.new(@deck)
+    guess2 = round.recordguess({value: "Jack", suit: "Diamonds"})
+
+
+    assert_equal "Incorrect.", guess2.feedback
+  end
+
+  def test_the_number_of_correct_guesses
+    round = Round.new(@deck)
+    round.recordguess({value: "3", suit: "Hearts"})
+    round.recordguess({value: "Jack", suit: "Diamonds"})
+
+    assert_equal 1, round.number_correct
+  end
+
+  def test_the_percent_correct
+    round = Round.new(@deck)
+    round.recordguess({value: "3", suit: "Hearts"})
+    round.recordguess({value: "Jack", suit: "Diamonds"})
+
+    assert_equal 50.0, round.percent_correct
   end
 end
