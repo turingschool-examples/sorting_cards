@@ -23,8 +23,8 @@ class DeckTest < Minitest::Test
     @card_3 = Card.new("2", "Hearts")
     @card_4 = Card.new("King", "Hearts")
     @card_5 = Card.new("King", "Diamonds")
-    @deck = Deck.new(@card_1, @card_2)
-    @deck_2 = Deck.new(@card_1, @card_2, @card_3, @card_4, @card_5)
+    @deck = Deck.new([@card_1, @card_2])
+    @deck_2 = Deck.new([@card_1, @card_2, @card_3, @card_4, @card_5])
   end
 
   def test_it_exists
