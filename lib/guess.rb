@@ -1,12 +1,9 @@
-
 require 'pry'
-
 
 class Guess
   attr_reader :response, :card
 
   def initialize(response, card)
-    #my response to what is your guess?
     @response = response
     @card = card
   end

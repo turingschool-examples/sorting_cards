@@ -50,7 +50,7 @@ class RoundTest < Minitest::Test
     cards = [card_1, card_2]
     deck = Deck.new(cards)
     round = Round.new(deck)
-    new_guess = round.record_guess({value: "3", suit: "Hearts" })
+    round.record_guess({value: "3", suit: "Hearts" })
     assert_equal "3 of Hearts", round.guesses.last.response
   end
 
@@ -80,7 +80,7 @@ class RoundTest < Minitest::Test
     cards = [card_1, card_2]
     deck = Deck.new(cards)
     round = Round.new(deck)
-    new_guess = round.record_guess({value: "3", suit: "Hearts" })
+    round.record_guess({value: "3", suit: "Hearts" })
     new_card = deck.cards.rotate[0]
     assert_equal deck.top_card, new_card
   end
@@ -91,8 +91,8 @@ class RoundTest < Minitest::Test
     cards = [card_1, card_2]
     deck = Deck.new(cards)
     round = Round.new(deck)
-    new_guess_1 = round.record_guess({value: "3", suit: "Hearts" })
-    new_guess_2 = round.record_guess({value: "Jack", suit: "Diamonds" })
+    round.record_guess({value: "3", suit: "Hearts" })
+    round.record_guess({value: "Jack", suit: "Diamonds" })
     assert_equal 2, round.guesses.count
   end
 
@@ -102,8 +102,8 @@ class RoundTest < Minitest::Test
     cards = [card_1, card_2]
     deck = Deck.new(cards)
     round = Round.new(deck)
-    new_guess_1 = round.record_guess({value: "3", suit: "Hearts" })
-    new_guess_2 = round.record_guess({value: "Jack", suit: "Diamonds" })
+    round.record_guess({value: "3", suit: "Hearts" })
+    round.record_guess({value: "Jack", suit: "Diamonds" })
     assert_equal 1, round.number_correct
   end
 
@@ -113,9 +113,9 @@ class RoundTest < Minitest::Test
     cards = [card_1, card_2]
     deck = Deck.new(cards)
     round = Round.new(deck)
-    new_guess_1 = round.record_guess({value: "3", suit: "Hearts" })
-    new_guess_2 = round.record_guess({value: "Jack", suit: "Diamonds" })
+    round.record_guess({value: "3", suit: "Hearts" })
+    round.record_guess({value: "Jack", suit: "Diamonds" })
     assert_equal 50.0, round.percent_correct
-    binding.pry
   end
+
 end

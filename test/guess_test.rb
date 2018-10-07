@@ -37,4 +37,5 @@ class GuessTest < Minitest::Test
     guess = Guess.new("2 of Diamonds", card)
     assert "You're wrong.", guess.feedback
   end
+  
 end
