@@ -33,7 +33,11 @@ class Round
   end
 
   def percent_correct
-    (number_correct * 100.0 / @@guesses.size.to_f).round(1)
+    if @@guesses.size > 0
+      (number_correct * 100.0 / @@guesses.size.to_f).round(1)
+    else
+      0
+    end
   end
 
   #Command Methods

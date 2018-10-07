@@ -62,4 +62,24 @@ class Print
     puts "Can you guess?"
   end
 
+  def self.goodbye(percent_correct)
+    puts "Goodbye! I hope you had fun!"
+    print "#{percent_correct}\% of your guesses were correct. "
+    puts reaction_from_percent(percent_correct)
+    puts "Now exiting the most fun game ever concieved by anyone ever..."
+  end
+
+  def self.reaction_from_percent(percent)
+    reactions = { 50  => "Astounding.",
+                  30  => "Incredible.",
+                  15  => "Well done.",
+                  2   => "Better than random chance.",
+                  0   => "At least you still have your looks."}
+
+
+    reactions.each do |k,v|
+      return v if k <= percent
+    end
+  end
+
 end

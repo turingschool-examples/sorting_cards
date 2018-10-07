@@ -13,6 +13,7 @@ class FunGuessingGame < UI
     setup
     Print.welcome
     repl
+    Print.goodbye(@round.percent_correct)
   end
 
   private
