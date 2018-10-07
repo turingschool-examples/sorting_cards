@@ -10,8 +10,9 @@ class Deck
     cards.size
   end
 
-  def shuffle
-    @cards.shuffle!
+  def shuffle!
+    @cards = @cards.shuffle!
+    nil
   end
 
 

@@ -19,7 +19,7 @@ class Card
   def self.from_f(float)
 
     suit = SUITDEC.key (float % 1).round(1)
-    value = float > 10 ? FACECARDS.key(float.round) : float.round.to_s
+    value = float >= 11 ? FACECARDS.key(float.round) : float.round.to_s
 
     Card.new(value, suit, float)
   end
@@ -31,8 +31,6 @@ class Card
     suit_f = SUITDEC[suit]
 
     return val_f + suit_f unless val_f == 0.0
-    require 'pry'; binding.pry if FACECARDS[value] == nil
-
     return FACECARDS[value] + suit_f
   end
 

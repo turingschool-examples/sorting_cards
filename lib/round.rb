@@ -1,12 +1,13 @@
 require_relative 'guess'
 
 class Round
-  attr_reader :guesses
+  attr_reader :num_guesses
 
   @@deck = []
   @@guesses = []
 
   def initialize(deck = nil)
+    @num_guesses = 0
      if deck
        @@deck = deck
      else
@@ -40,7 +41,7 @@ class Round
     response = args.is_a?(Hash) ? "#{args[:value]} of #{args[:suit]}" : args
 
     new_guess = Guess.new(response, current_card)
-    @@guesses << new_guess
+    @@guesses << new_guess; @num_guesses += 1
     new_guess
   end
 

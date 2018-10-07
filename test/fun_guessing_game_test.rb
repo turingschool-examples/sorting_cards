@@ -42,7 +42,7 @@ class FunGuessingGameTest < MiniTest::Test
     card = Card.new("2","Hearts")
     response = "3 of Spades"
     guess = Guess.new(response, card)
-    assert_equal :diff, FunGuessingGame.evaluate_suit(guess)
+    assert_equal :diff_color, FunGuessingGame.evaluate_suit(guess)
   end
 
   #Now value eval tests
