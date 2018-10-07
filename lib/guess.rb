@@ -1,6 +1,9 @@
 require './lib/card'
+require './lib/guess'
 class Guess
   attr_reader :response, :card
+
+
   def initialize (response, card)
     @response = response
     @card = card
@@ -8,24 +11,15 @@ class Guess
   end
 
   def correct?
-    [@card.value, @card.suit] == @response.split(' of ')
+  [@card.value, @card.suit] == @response.split(' of ')
   end
-
 
   def feedback
-    if correct? == true
+     if correct? == true
       p "True!"
-    else
+     else
       p "False!"
     end
-  end
-
-  def number_correct
-    return @correct
-  end
-
-  def number_incorrect
-    return @incorrect
   end
 
 end
