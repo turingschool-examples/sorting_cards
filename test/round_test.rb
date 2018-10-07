@@ -84,9 +84,8 @@ class RoundTest < Minitest::Test
     deck = Deck.new([card_1, card_2, card_3])
     round = Round.new(deck)
     new_guess = round.record_guess({value: "3", suit: "Hearts"})
-    require 'pry'
-    binding.pry
-    assert_equal 1, new_guess.number_correct
+  
+    assert_equal 1, round.number_correct
 
   end
 end
