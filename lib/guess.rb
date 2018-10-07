@@ -6,10 +6,6 @@ class Guess
     @card = card
   end
 
-  # def response
-  #   @response
-  # end
-
   def correct?
     if @response.split[0] == card.value && @response.split[-1] == card.suit
       true

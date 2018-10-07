@@ -1,4 +1,3 @@
-require 'pry'
 class Round
 attr_reader :deck,
             :guesses,
@@ -26,8 +25,6 @@ attr_reader :deck,
 
   def percent_correct
     @number_correct.to_f / @guesses.length * 100
-    #total number of guesses aka number of
-    #elements in the guess array
   end
 
 end
