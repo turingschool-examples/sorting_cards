@@ -35,13 +35,16 @@ class Deck
     return @cards
   end
 
-  def merge_sort
-    return @cards if @cards.length <= 1
+  def merge_sort(cards = @cards)
+    return cards if cards.length <= 1
     half = cards.length / 2
     binding.pry
-    left_array = @cards.take(half)
-    right_array = @cards.drop(half)
-  
+    left_array = merge_sort(cards.take(half))
+    right_array = merge_sort(cards.drop(half))
+    merge(left_array,right_array)
+  end
+
+  def merge
 
   end
 
