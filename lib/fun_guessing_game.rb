@@ -56,7 +56,11 @@ class FunGuessingGame < UI
 
   def self.setup_auto_complete
     setup_responses_arr
-    card_completer = proc { |s| @responses_arr.grep(/^#{Regex.escape(s)}/) }
+    card_completer = proc { |s| @responses_arr.grep(/^#{s}/) }
+    # greps argument was /^#{Regexp.escape(s)}/ in the online example.
+    # I deleted this because I have no idea what it does and code runs exactly
+    # the same without it
+
     Readline.completion_append_character = ""
     Readline.completion_proc = card_completer
   end
