@@ -17,4 +17,10 @@ class CardTest < Minitest::Test
     card = Card.new("Ace", "Spades")
     assert_equal "Spades", card.suit
   end
+
+  def test_keys_and_values_can_be_added
+    card = Card.new("Ace", "Spades")
+    assert_equal 144, card.add_keys_and_values
+  end
+
 end
