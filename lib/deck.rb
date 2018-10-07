@@ -14,24 +14,19 @@ class Deck
   end
 
   def sort
-    sorted_cards = []
-    loop do
+    switch = true
+        while switch do
+          switch = false
+          (count - 1).times do |index|
+            # binding.pry
+            if @cards[index].ranked_value > @cards[index + 1].ranked_value
+              @cards[index], @cards[index +1] = @cards[index + 1], @cards[index]
+              switch = true
+            end
+          end
+        end
+      @cards
       binding.pry
-      if @cards[0].sorting_value > @cards[2].sorting_value
-        @cards[0] = @cards[1]
-      elsif
-        @cards[1].sorting_value > @cards[2].sorting_value
-        @cards[1] = @cards[2]
-        #this is not the way to switch them!!!
-      elsif
-        @cards[2].sorting_value > @cards[3].sorting_value
-        @cards[2] = @cards[3]
-      elsif
-        @cards[3].sorting_value > @cards[4].sorting_value
-        @cards[3] = @cards[4]
-      end
-      break
-      sorted_cards
-    end
   end
+
 end

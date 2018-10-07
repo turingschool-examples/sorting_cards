@@ -1,15 +1,12 @@
 require 'pry'
 
 class Card
-  attr_reader :value, :suit
+  attr_reader :value, :suit, :ranked_value
 
   def initialize(value, suit)
     @value = value
     @suit = suit
-  end
-
-  def sorting_value
-    janet = {
+    numbers = {
       "2" => 5,
       "3" => 10,
       "4" => 15,
@@ -25,15 +22,13 @@ class Card
       "Ace" => 65
     }
 
-    abernathy = {
+     names = {
       "Clubs" => 1,
       "Diamonds" => 2,
       "Hearts" => 3,
       "Spades" => 4
     }
-
-    janet[@value] + abernathy[@suit]
-    
+    @ranked_value = numbers[@value] + names[@suit]
   end
 
 end
