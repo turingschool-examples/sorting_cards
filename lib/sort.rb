@@ -5,66 +5,66 @@ class Sort
     @deck = deck
   end
 
-  def sort
+  def self.sort
     swap = true
       while swap do
         swap = false
-        0.upto(deck.count + 2).times do |switch|
-          if deck.count[switch].value <=> deck.count[switch + 1].value = -1
-            if deck.count[switch].value == "Ace"
-              deck.count[switch], deck.count[switch + 1] = deck.count[switch + 1], deck.count[switch]
+        (@indeck.count + 2).times do |switch|
+          if deck.cards[switch].value <=> deck.cards[switch + 1].value = -1
+            if deck.cards[switch].value == "Ace"
+              deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
               swap = true
-            elsif deck.count[switch + 1].value == "Ace"
+            elsif deck.cards[switch + 1].value == "Ace"
               #Do nothing
-            elsif deck.count[switch] == "King"
-              deck.count[switch], deck.count[switch + 1] = deck.count[switch + 1], deck.count[switch]
+            elsif deck.cards[switch] == "King"
+              deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
               swap = true
-            elsif deck.count[switch + 1] == "King"
+            elsif deck.cards[switch + 1] == "King"
               #do nothing
-            elsif deck.count[switch] == "Queen"
-              deck.count[switch], deck.count[switch + 1] = deck.count[switch + 1], deck.count[switch]
+            elsif deck.cards[switch] == "Queen"
+              deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
               swap = true
-            elsif deck.count[switch + 1] == "Queen"
+            elsif deck.cards[switch + 1] == "Queen"
               #do nothing
             else
-              deck.count[switch], deck.count[switch + 1] = deck.count[switch + 1], deck.count[switch]
+              deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
             end
 
-          elsif deck.count[switch].value <=> deck.count[switch + 1].value = 0
-            if deck.count[switch].suit == "Spades"
-              deck.count[switch], deck.count[switch + 1] = deck.count[switch + 1], deck.count[switch]
+          elsif deck.cards[switch].value <=> deck.cards[switch + 1].value = 0
+            if deck.cards[switch].suit == "Spades"
+              deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
               swap = true
-            elsif deck.count[switch + 1].suit == "Spades"
+            elsif deck.cards[switch + 1].suit == "Spades"
               #Do nothing
-            elsif deck.count[switch].suit == "Hearts"
-              deck.count[switch], deck.count[switch + 1] = deck.count[switch + 1], deck.count[switch]
+            elsif deck.cards[switch].suit == "Hearts"
+              deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
               swap = true
-            elsif deck.count[switch + 1].suit == "Hearts"
+            elsif deck.cards[switch + 1].suit == "Hearts"
               #Do nothing
-            elsif deck.count[switch].suit == "Diamonds"
-              deck.count[switch], deck.count[switch + 1] = deck.count[switch + 1], deck.count[switch]
+            elsif deck.cards[switch].suit == "Diamonds"
+              deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
               swap = true
-            elsif deck.count[switch + 1].suit == "Diamonds"
+            elsif deck.cards[switch + 1].suit == "Diamonds"
             end
 
-          elsif deck.count[switch].value <=> deck.count[switch + 1].value = 1
-            if deck.count[switch].value == "Ace"
-              deck.count[switch], deck.count[switch + 1] = deck.count[switch + 1], deck.count[switch]
+          elsif deck.cards[switch].value <=> deck.cards[switch + 1].value = 1
+            if deck.cards[switch].value == "Ace"
+              deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
               swap = true
-            elsif deck.count[switch + 1] == "Ace"
+            elsif deck.cards[switch + 1] == "Ace"
               #do nothing
-            elsif deck.count[switch] == "King"
-              deck.count[switch], deck.count[switch + 1] = deck.count[switch + 1], deck.count[switch]
+            elsif deck.cards[switch] == "King"
+              deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
               swap = true
-            elsif deck.count[switch + 1].value == "King"
+            elsif deck.cards[switch + 1].value == "King"
               #Do nothing
-            elsif deck.count[switch].value == "Queen"
-              deck.count[switch], deck.count[switch + 1] = deck.count[switch + 1], deck.count[switch]
+            elsif deck.cards[switch].value == "Queen"
+              deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
               swap = true
-            elsif deck.count[switch + 1].value == "Queen"
+            elsif deck.cards[switch + 1].value == "Queen"
             end
           end
-        end
+         end
       end
   end
 end

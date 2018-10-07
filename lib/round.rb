@@ -1,16 +1,19 @@
 class Round
-  attr_reader :deck, :guesses
-  def initialize(deck)
+  attr_reader :deck, :guesses, :full_guess
+    def initialize(deck)
     @deck = deck
     @guesses = []
-  end
+    @full_guess = full_guess
+    end
 
   def current_card
-    gueeses.at(0)
+    deck.cards.delete_at(0)
   end
-  def record_guess
-    #study Hashes
+  def record_guess(recorded)
+    inguess = "#{recorded[:value]} of #{recorded[:suit]}"
+    @full_guess = Guess.new(inguess, current_card)
   end
+
 
 
 

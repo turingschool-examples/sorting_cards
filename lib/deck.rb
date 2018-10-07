@@ -12,6 +12,12 @@ class Deck
   def count
     contents.count
   end
+  def sort
+    contents.sort
+  end
+  def map
+    contents.map
+  end
 end
 
 #The cards need to be made

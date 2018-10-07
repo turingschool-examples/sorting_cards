@@ -3,7 +3,7 @@ require './lib/deck'
 require './lib/sort'
 require 'Minitest/autorun'
 require 'Minitest/pride'
-
+require 'pry'
 class SortTest < Minitest::Test
 
   def setup
@@ -13,16 +13,19 @@ class SortTest < Minitest::Test
     @card_4 = Card.new("Jack", "Clubs")
     @card_5 = Card.new("Ace", "Diamonds")
     @deck = Deck.new([@card_1, @card_2, @card_3, @card_4, @card_5])
-    @sort = Sort.new(@deck)
   end
 
   def test_it_exists
-    assert_instance_of Sort, @sort
+    sort = Sort.new(@deck)
+    assert_instance_of Sort, sort
   end
 
-  # def test_if_it_can_sort
-  #
-  # end
+  def test_if_it_can_sort
+  # sort = Sort.new(@deck)
+  deck = [@card_1, @card_3, @card_4, @card_5, @card_2]
+
+  assert_equal deck, @deck.sort
+  end
 
 
 end
