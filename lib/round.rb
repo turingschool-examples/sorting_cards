@@ -1,7 +1,7 @@
 class Round
-attr_reader :deck,
-            :guesses,
-            :number_correct
+  attr_reader :deck,
+              :guesses,
+              :number_correct
 
   def initialize(deck)
     @deck = deck

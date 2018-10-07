@@ -36,7 +36,6 @@ class RoundTest < Minitest::Test
     expected = new_guess
     assert_equal expected, actual
     assert_equal true, new_guess.correct?
-    #test to make sure rotating the deck
   end
 
   def test_it_has_guesses
