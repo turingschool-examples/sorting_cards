@@ -43,7 +43,7 @@ pry(main)> require './lib/card'
 pry(main)> card = Card.new("Ace", "Spades")
 #=> #<Card:0x00007f800e29f0c8 @suit="Spades", @value="Ace">
 
-pry(main)> card.value
+pry(main)> cc
 #=> "Ace"
 
 pry(main)> card.suit

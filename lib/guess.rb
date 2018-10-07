@@ -1,3 +1,9 @@
+# require './lib/round'
+# require './lib/guess'
+# require './lib/card'
+# require './lib/deck'
+# require 'pry'
+
 class Guess
 
 #A guess is initialized with two arguments.
