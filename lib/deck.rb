@@ -17,25 +17,28 @@ class Deck
 # values -> lowest to highest: 2->10, Jack, Queen, King, Ace
 # suits -> lowest to highest: Clubs, Diamonds, Hearts, Spades
 
-deck = Deck.new([@cards])
+# deck = Deck.new([@cards])
 
   def sort
     #if left card rank > right card rank, swap their position
     loop do
-      pickles = deck.length
-      (pickles-1).times do |i|
-        switcheroo = false
-        if deck[i].rank > deck[i+1].rank
-          a = deck[i]
-          b = deck[i+1]
-          deck[i+1] = a
-          deck[i] = b
+      deck_length = @cards.length
+      switcheroo = false
+      (deck_length-1).times do |i|
+        if @cards[i].rank > @cards[i+1].rank
           switcheroo = true
+          a = @cards[i]
+          b = @cards[i+1]
+          @cards[i+1] = a
+          @cards[i] = b
         end
+      end
         #stop iterating when no swaps occur during a full iteration of the loop
-      break if switcheroo == false
+      if switcheroo == false
+        break
       end
     end
+    @cards
   end
 
 

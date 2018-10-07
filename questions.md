@@ -15,3 +15,9 @@ it does a few things:
 
 -How are we referencing methods from other files? Maybe this will be more clear when we learn about scope
 -Referencing is still hazy. Where are we referencing attributes, methods, and instances of a class?
+
+-Why am I not able to reference rank in the deck.rb file, if './lib/card' is required, and rank is a method defined in the class?
+   aka it only works with rank defined as an attribute and instance variable. why is that?
+
+
+  -Why does the .sort test (the fourth one in deck_test.rb) take forever to run?
