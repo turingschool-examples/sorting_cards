@@ -1,7 +1,9 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card'
+require './lib/deck'
 require './lib/merge_sorter'
+require 'pry'
 
 class MergeSorterTest < Minitest::Test
 
@@ -20,29 +22,40 @@ class MergeSorterTest < Minitest::Test
   end
 
   def test_it_scores_cards
-    scored_cards = [[@card_1, "2.2"], [@card_2, "12.3"],
-                    [@card_3, "3.1"], [@card_4, "9.0"], [@card_5, "12.1"]]
+    scored_cards = [[@card_1, 2.2], [@card_2, 12.3],
+                    [@card_3, 3.1], [@card_4, 9.0], [@card_5, 12.1]]
 
-    assert_equal scored_cards, @merge_sorter.score_cards
+    assert_equal scored_cards, @merge_sorter.score_cards(@cards)
   end
 
   def test_it_merge_sorts_cards
-    skip
     expected = [@card_1, @card_3, @card_4, @card_5, @card_2]
-    assert_equal expected, @merge_sorter.merge_sort
+    assert_equal expected, @merge_sorter.merge_sort_and_resolve
   end
 
   def test_it_merges_cards
-    merge_sorter = MergeSorter.new([@card_1, @card_3])
-    actual = @merge_sorter.merge([[@card_1, "2.2"]], [[@card_3, "3.1"]])
-    assert_equal [[@card_1, "2.2"], [@card_3, "3.1"]], actual
+    merge_sorter = MergeSorter.new([@card_3, @card_1, @card_4, @card_5])
+    expected = [[@card_1, 2.2], [@card_3, 3.1], [@card_4, 9.0],
+                [@card_5, 12.1]]
+    actual = @merge_sorter.merge([[@card_3, 3.1], [@card_4, 9.0]],
+                                [[@card_1, 2.2], [@card_5, 12.1]])
+    assert_equal expected, actual
   end
 
-  def test_it_sorts # use deck for this?
-    skip
-    sorted_cards = [@card_1, @card_3, @card_4, @card_5, @card_2]
+  def test_it_merges_uneven_cards
+    expected = [[@card_1, 2.2], [@card_3, 3.1], [@card_4, 9.0],
+                [@card_5, 12.1], [@card_2, 12.3]]
+    actual = @merge_sorter.merge([[@card_3, 3.1], [@card_4, 9.0], [@card_2, 12.3]],
+                                [[@card_1, 2.2], [@card_5, 12.1]])
+    assert_equal expected, actual
+  end
 
-    assert_equal sorted_cards, @merge_sorter.merge_sort
+
+  def test_it_sorts # use deck for this?
+    deck = Deck.new(@cards)
+    expected = [@card_1, @card_3, @card_4, @card_5, @card_2]
+
+    assert_equal expected, deck.merge_sort
   end
 
 end
