@@ -35,7 +35,7 @@ class DeckTest < Minitest::Test
     assert_equal [card_1], deck.sort
   end
 
-  def test_merge_returns_new_sorted_array
+  def test_merge_sort_returns_new_sorted_array
     card_1 = Card.new("4","Hearts")
     card_2 = Card.new("Ace", "Spades")
     card_3 = Card.new("5", "Diamonds")
