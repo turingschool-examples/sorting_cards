@@ -11,13 +11,12 @@ class GuessTest < Minitest::Test
     assert_instance_of Guess, guess
   end
 
-  # test .card returns input value
   def test_it_has_a_card
     card = Card.new("10", "Hearts")
     guess = Guess.new("10 of Hearts", card)
     assert_equal card, guess.card
   end
-  # test .response is "10 of Hearts"
+
   def test_it_has_a_response
     card = Card.new("10", "Hearts")
     guess = Guess.new("10 of Hearts", card)
@@ -25,11 +24,9 @@ class GuessTest < Minitest::Test
   end
 
   def test_guess_correct
-    card = Card.new("10", "hearts")
-    guess = Guess.new("10 of hearts", card)
+    card = Card.new("10", "Hearts")
+    guess = Guess.new("10 of Hearts", card)
     assert_equal true, guess.correct?
-  # compare card with guess
-  # interpolate card value & suit
   end
 
   def test_guess_incorrect
@@ -37,18 +34,17 @@ class GuessTest < Minitest::Test
     guess = Guess.new("2 of Diamonds", card)
     assert_equal false, guess.correct?
   end
-#guess false is possible
+
   def test_guess_results_in_feedback
-    card = Card.new("10", "hearts")
-    guess = Guess.new("10 of hearts", card)
+    card = Card.new("10", "Hearts")
+    guess = Guess.new("10 of Hearts", card)
     assert_equal "Correct!", guess.feedback
-  # test .feedback
   end
 
   def test_results_in_alternate_feedback
     card = Card.new("Queen", "Clubs")
     guess = Guess.new("2 of Diamonds", card)
     assert_equal "Incorrect.", guess.feedback
-  end 
-  # test alternate feedback
+  end
+  
 end

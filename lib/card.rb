@@ -1,6 +1,6 @@
 class Card
-  attr_reader :value, :suit, :cards, :card_sum
-  require 'pry'
+  attr_reader :value, :suit, :card_sum
+
   def initialize(value, suit)
     @value = value
     @suit = suit
@@ -23,24 +23,7 @@ class Card
                       "King" => 1200,
                       "Ace" => 1300
                       }
-    @card_sum = card_reference[value] + card_reference[suit]
+    @card_sum = card_reference[@value] + card_reference[@suit]
   end
-
-  # def sum_sort(cards)
-  #
-  # loop do
-  #   shuffled = false
-  #   4.times do |i|
-  #     if cards[i].card_sum > cards[i + 1].card_sum
-  #       cards[i].card_sum, cards[i + 1].card_sum = cards[i + 1].card_sum, cards[i].card_sum
-  #       shuffled = true
-  #     end
-  #   end
-  #   break if not shuffled
-  # end
-  # cards
-  #
-  # end
-
 
 end

@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card'
 require './lib/deck'
-require 'pry'
+
 
 class SortTest < Minitest::Test
 
@@ -21,7 +21,6 @@ class SortTest < Minitest::Test
   end
 
   def test_sort_is_operational_on_deck
-
     card_1 = Card.new("4","Hearts")
     card_2 = Card.new("Ace", "Spades")
     card_3 = Card.new("5", "Diamonds")
