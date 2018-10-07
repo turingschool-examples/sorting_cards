@@ -10,9 +10,15 @@ class Deck
     cards.size
   end
 
+  def shuffle
+    @cards.shuffle!
+  end
+
+
+  #everything below is a sort method
   def sort
     result = []
-    @cards.each do|card|
+    cards.each do|card|
       if result.size == 0 || card.to_f > result[-1].to_f
         result << card
       else
