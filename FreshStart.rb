@@ -83,6 +83,40 @@ class Deck
   	end
   	# array
   end
+
+
+    def split(cards)
+      suit_hash = {"Clubs":1, "Diamonds":2, "Hearts":3, "Spades":4}
+      all_card_hash = {"2":2,"3":3, "4":4, "5":5, "6":6, "7":7, "8":8, "9":9, "10":10, "Ace":14, "Jack":11, "Queen":12, "King":13}
+      if cards.length <= 1
+        cards
+      else
+        mid_point = (cards.length / 2).floor
+        left_side = split(cards[0..mid_point - 1]) # recursively splits this side array until it's an array of an arrays
+        right_side = split(cards[mid_point..cards.length]) # ^-- same but for the right side
+        merge(left_side, right_side) # takes the arrays of arrays & recursively sorts them
+      end
+    end
+
+
+    def merge(left, right) # takes the left and right side and recursively sorts them until an array is returned
+      suit_hash = {"Clubs":1, "Diamonds":2, "Hearts":3, "Spades":4}
+      all_card_hash = {"2":2,"3":3, "4":4, "5":5, "6":6, "7":7, "8":8, "9":9, "10":10, "Ace":14, "Jack":11, "Queen":12, "King":13}
+      first_card_key = left[0].value.to_sym
+      second_card_key = right[0].value.to_sym
+
+
+      if left.empty?
+        right
+      elsif right.empty?
+        left
+      elsif all_card_hash[first_card_key] < all_card_hash[second_card_key]
+        [left.first] + merge(left[1 .. left.length], right)
+      else
+        [right.first] + merge(left, right[1 .. right.length])
+      end
+    end
+
 end
 
 class Round
