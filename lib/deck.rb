@@ -17,11 +17,11 @@ class Deck
       @cards[i], @cards[i + 1] = @cards[i + 1], @cards[i]
     end
   end
-end
 
-def sort
-  (@cards.length - 1).times do |i|
-    swap(i)
+  def sort
+    (@cards.length - 1).times do |i|
+      swap(i)
+    end
+    @cards
   end
-  @cards
 end
