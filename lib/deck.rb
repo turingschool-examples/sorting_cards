@@ -52,6 +52,7 @@ class Deck
         sorted_array << left_array.shift
       end
     end
+    sorted_array + left_array + right_array
   end
 
 end
