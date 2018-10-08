@@ -3,6 +3,7 @@ require 'minitest/pride'
 require './lib/card'
 require './lib/deck'
 
+
 class DeckTest < Minitest::Test
   def test_does_it_exist
     card_1 = Card.new("3","Hearts")

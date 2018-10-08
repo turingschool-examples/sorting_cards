@@ -1,4 +1,5 @@
-require 'pry'
+require './lib/card'
+
 class Deck
 attr_reader :cards
   def initialize(cards)
@@ -8,7 +9,7 @@ attr_reader :cards
   def count
     @cards.count
   end
-binding.pry
+
   def sort
     until sorted? do
       runs_though = @cards.length - 1
@@ -22,8 +23,8 @@ binding.pry
   end
 
   def sorted?
-    @cards.each_index do |card|
-      if @cards[card].actual_value < @cards[card + 1].actual_value
+    @cards.each_index do |c|
+      if @cards[c].actual_value < @cards[c + 1].actual_value
         return true
       else
         return false
@@ -32,9 +33,9 @@ binding.pry
   end
 
   def swaps(array, x, y)
-    a = @cards[x]
-    b = @cards[y]
-    @cards[x] = b
-    @cards[y] = a
+    a = array[x]
+    b = array[y]
+    array[x] = b
+    array[y] = a
   end
 end
