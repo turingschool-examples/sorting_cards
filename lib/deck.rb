@@ -11,17 +11,6 @@ class Deck
    @cards.size
   end
 
-  def sort
-      #if left card rank > right card rank, swap their position
-      loop do
-        deck_length = @cards.length
-        switcheroo = false
-        bubblez
-        break if switcheroo == false
-      end
-      @cards
-    end
-
   def bubblez
     deck_length = @cards.length
         (deck_length-1).times do |i|
@@ -34,11 +23,21 @@ class Deck
           end
         end
       end
+      
+  def sort
+      #if left card rank > right card rank, swap their position
+      loop do
+        deck_length = @cards.length
+        switcheroo = false
+        bubblez
+        break if switcheroo == false
+      end
+      @cards
+    end
 
 
-        #stop iterating when no swaps occur during a full iteration of the loop
 
-
+#---------------------- #for practice:
 #   def merge_sort
 #     #take a list, like the array @cards
 #     @cards
@@ -101,5 +100,5 @@ class Deck
 
 
 
-#end the Deck class
+#end the Deck class lol
 end
