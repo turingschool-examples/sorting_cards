@@ -32,21 +32,5 @@ attr_reader :deck, :guesses, :number_correct
 
     def percent_correct
       (@number_correct.to_f / @number_of_guesses.to_f) * 100
-
-
     end
-
-
-
-
-
-
 end
-
-
-
-
-
-
-
-  #@deck.cards

@@ -1,3 +1,5 @@
+require './lib/card'
+require 'pry'
 
 class Deck
 attr_reader :cards
@@ -10,46 +12,64 @@ attr_reader :cards
     cards.count
   end
 
-#make method that goes through each part of deck and assign integer values to face
+  def sorted?(cards)
+    cards.each do |c|
+      if cards[c].assign_value < cards[c + 1].assign_value
+        return true
+      else
+        return false
+      end
+    end
+  end
 
+  def swap(array, i, j)
+    x = array[i]
+    y = array[j]
+    array[i] = y
+    array[j] = x
+  end
 
-
-
-
-
-
-
-
-
-
-
-  # def assign_value
-  #   deck.each do |deck, cards|
-  #     p deck
-  #     cards.each do |value, suit|
-  #       value.to_i
-  #       value["Jack"] == 11
-  #       value["Queen"]== 12
-  #       value["King"] == 13
-  #       value["Ace"] == 14
-  #     # when suit: "Spades" ==
-  #     # when suit: "Diamonds" ==
-  #     # when suit: "Hearts" ==
-  #     # when suit: "Clubs" ==
-  #     end
-  #     card_1 = Card.new("4","Hearts")
-  #     card_2 = Card.new("Ace", "Spades")
-  #     card_3 = Card.new("5", "Diamonds")
-  #     card_4 = Card.new("Jack", "Clubs")
-  #     card_5 = Card.new("Ace", "Diamonds")
-  #     deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
-  #     p value.card_1
-  #
-  # #   end
-  # end
-
-
-  #
-
+  def sort
+  total_it = (@cards.length - 1)
+  until sorted?(@cards)
+    total_it.times do |n|
+      if @cards[n].assign_value > @cards[n + 1].assign_value
+        swap(@cards, n, (n + 1))
+      end
+    end
+  end
+  return @cards
+  end
 
 end
+
+
+#define method that determines if the deck is sorted by passing in cards sorted?(cards),
+#using an each iterator, go through cards and check if the parameters have been met
+#parameters are that card.value index on left is less than card.value index on right
+#if true, return false
+#if false, return false
+
+#def method that swaps cards if value on left is > value on right
+#set card array elements to variables
+#x = card[i]
+#y = card[i + 1]
+#cards swap by the setting card [i] to y and thus switching locations
+#card[i] = y
+#card[i + 1] = x
+
+
+#define method sort that will sort card array based on new assigned values
+#tell ruby how many times to run through array
+#total number of iterations that will take place is = length of cards array - 1
+   #because if there are 4 elements, will take 3 iterations to pair cards together
+   # total_it = (cards.length - 1)
+#using an until loop until it meets the parameters of sorted? method, keep running block
+#will do it the number of times in total_it and will keep running until sorted? is true
+#total_it.times do |i|
+  #if the instance variable of cards(with its new integer value, defined by new_value) is
+  #greater than the instance variable of cards next to it, then it should swap places with it
+  #if @cards[i].new_value > @cards[i+1].new_value
+  #swap cards using swap method illustrated above
+  #cards.swap
+#keep running until sorted!

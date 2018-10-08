@@ -1,8 +1,8 @@
-# require './lib/round'
-# require './lib/guess'
-# require './lib/card'
-# require './lib/deck'
-# require 'pry'
+require './lib/round'
+require './lib/guess'
+
+require './lib/deck'
+require 'pry'
 
 
 
@@ -20,6 +20,10 @@ attr_reader :value, :suit
 
   def assign_value
     @new_card_value[value]  + @new_suit_value[suit]
+     # new_value = @new_card_value[value]  + @new_suit_value[suit]
   end
+
+
+
 
 end

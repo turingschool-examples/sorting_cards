@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card'
-require './lib/deck'
+# require './lib/deck'
 require 'pry'
 
 class CardTest < Minitest::Test
