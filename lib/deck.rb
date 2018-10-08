@@ -18,21 +18,21 @@ class Deck
     card_1.value == card_2.value && card_1.suit > card_2.suit || values.find_index(card_1.value) > values.find_index(card_2.value)
   end
 
-  def sort
-    return @cards if @cards.length <= 1
+  def sort(cards = @cards)
+    return cards if cards.length <= 1
     swapped = true
     while swapped
       swapped = false
       i = 0
-      while i < @cards.length - 1
-        if greater_than(@cards[i], @cards[i+1])
-          @cards[i], @cards[i+1] = @cards[i+1], @cards[i]
+      while i < cards.length - 1
+        if greater_than(cards[i], cards[i+1])
+          cards[i], cards[i+1] = cards[i+1], cards[i]
           swapped = true
         end
         i += 1
       end
     end
-    return @cards
+    return cards
   end
 
   def merge_sort(cards = @cards)
