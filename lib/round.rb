@@ -3,19 +3,28 @@ attr_reader :deck, :guesses
   def initialize(deck)
     @deck = deck
     @guesses = []
-
   end
 
   def current_card
-    deck.cards[0]
+    @deck.cards[0]
+  end
+
+  def next_card
+    @deck.cards.shift
   end
 
   def record_guess(user_guess)
     response = "#{user_guess[:value]} of #{user_guess[:suit]}"
-    card = current_card
-    new_guess = Guess.new(response, card)
+    new_guess = Guess.new(response, current_card)
     @guesses << new_guess
-    return new_guess
+    next_card
+    new_guess
+  end
+
+  def number_correct
+    @guesses.count do |guess|
+      guess.correct?
+      end
   end
 
 

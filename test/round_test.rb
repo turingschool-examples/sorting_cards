@@ -4,7 +4,7 @@ require './lib/round'
 require './lib/deck'
 require './lib/card'
 require './lib/guess'
-
+require 'pry'
 
 class RoundTest < Minitest::Test
   def test_does_it_exist
@@ -35,12 +35,12 @@ class RoundTest < Minitest::Test
   end
 
   def test_does_current_card_exist
-  card_1 = Card.new("3","Hearts")
-  card_2 = Card.new("4", "Clubs")
-  deck = Deck.new([card_1, card_2])
-  round = Round.new(deck)
+    card_1 = Card.new("3","Hearts")
+    card_2 = Card.new("4", "Clubs")
+    deck = Deck.new([card_1, card_2])
+    round = Round.new(deck)
 
-  assert_equal card_1, round.current_card
+    assert_equal card_1, round.current_card
   end
 
   def test_does_record_guess_work
@@ -62,7 +62,19 @@ class RoundTest < Minitest::Test
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
     new_guess = round.record_guess({value: "3", suit: "Hearts"})
-
     assert_equal [new_guess], round.guesses
+
   end
+
+  def test_does_number_correct_return_the_correct_amount
+
+    card_1 = Card.new("3","Hearts")
+    card_2 = Card.new("4", "Clubs")
+    deck = Deck.new([card_1, card_2])
+    round = Round.new(deck)
+    new_guess = round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal 1, round.number_correct
+
+  end
+
 end
