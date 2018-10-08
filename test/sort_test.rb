@@ -4,6 +4,8 @@ require './lib/sort'
 require 'Minitest/autorun'
 require 'Minitest/pride'
 require 'pry'
+
+
 class SortTest < Minitest::Test
 
   def setup
@@ -21,7 +23,7 @@ class SortTest < Minitest::Test
   end
 
   def test_if_it_can_sort
-  # sort = Sort.new(@deck)
+  #sort = Sort.new(@deck)
   deck = [@card_1, @card_3, @card_4, @card_5, @card_2]
 
   assert_equal deck, @deck.sort

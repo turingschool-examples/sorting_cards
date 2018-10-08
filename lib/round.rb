@@ -11,7 +11,7 @@ class Round
   end
   def record_guess(recorded)
     inguess = "#{recorded[:value]} of #{recorded[:suit]}"
-    @full_guess = Guess.new(inguess, current_card)
+    Guess.new(inguess, current_card)
   end
 
 

@@ -1,5 +1,5 @@
 class Sort
-  attr_reader :deck
+  attr_reader :deck, :sort
 
   def initialize(deck)
     @deck = deck
@@ -7,9 +7,13 @@ class Sort
 
   def self.sort
     swap = true
-      while swap do
+      loop do
+        if swap == true
+          break
+        end
         swap = false
-        (@indeck.count + 2).times do |switch|
+        #(@deck.count + 2)
+        52.times do |switch|
           if deck.cards[switch].value <=> deck.cards[switch + 1].value = -1
             if deck.cards[switch].value == "Ace"
               deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
@@ -62,6 +66,7 @@ class Sort
               deck.cards[switch], deck.cards[switch + 1] = deck.cards[switch + 1], deck.cards[switch]
               swap = true
             elsif deck.cards[switch + 1].value == "Queen"
+
             end
           end
          end

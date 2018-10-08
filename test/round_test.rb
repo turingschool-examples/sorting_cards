@@ -52,10 +52,7 @@ class RoundTest < Minitest::Test
     new_guess = @round.record_guess({value: "3", suit: "Hearts"})
     assert_equal new_guess.correct?, true
   end
-  # def test_if_guesses_contiain_new_objects
-  #   @round
-  #
-  # end
+
 
 
 end

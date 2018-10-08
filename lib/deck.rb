@@ -1,22 +1,14 @@
 
 class Deck
-  attr_reader :contents
+  attr_reader :cards, :sort
 
-  def initialize(contents)
-    @contents = contents
+  def initialize(cards)
+    @cards = cards
+    # @sort = sort
   end
 
-  def cards
-    contents
-  end
   def count
-    contents.count
-  end
-  def sort
-    contents.sort
-  end
-  def map
-    contents.map
+    cards.count
   end
 end
 
