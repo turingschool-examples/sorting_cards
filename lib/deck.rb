@@ -7,4 +7,8 @@ end
 def count
   @cards.length
 end
+
+def new_card
+  cards.shift 
+end
 end
