@@ -52,7 +52,4 @@ class RoundTest < Minitest::Test
     new_guess = @round.record_guess({value: "3", suit: "Hearts"})
     assert_equal new_guess.correct?, true
   end
-
-
-
 end

@@ -1,5 +1,5 @@
 class Round
-  attr_reader :deck, :guesses, :full_guess
+  attr_reader :deck, :guesses, :full_guess,
     def initialize(deck)
     @deck = deck
     @guesses = []
@@ -13,8 +13,4 @@ class Round
     inguess = "#{recorded[:value]} of #{recorded[:suit]}"
     Guess.new(inguess, current_card)
   end
-
-
-
-
 end

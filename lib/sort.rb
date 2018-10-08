@@ -7,7 +7,7 @@ class Sort
 
   def self.sort
     swap = true
-      loop do
+      @deck.loop do
         if swap == true
           break
         end
