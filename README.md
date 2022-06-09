@@ -25,13 +25,13 @@ A `Card` represents a single card in our deck. It stores a suit and a value.
 Use the tests provided to drive the development of your `Card` class. From the root directory of your project, run the test like this:
 
 ```
-ruby test/card_test.rb
+rspec spec/card_spec.rb
 ```
 
-If you haven't already, you will need to install minitest:
+If you haven't already, you will need to install RSpec:
 
 ```
-gem install minitest
+gem install rspec
 ```
 
 If your `Card` class is written properly, you should be able to open a pry session and interact with it like so:
@@ -284,7 +284,7 @@ deck.merge_sort
 
 The student:
 
-* appropriately uses Strings, Integers, Floats, Ranges, Symbols, Nils, Arrays, and Hashes
+* appropriately uses Ruby datatypes to solve a problem (including Strings, Integers, Floats, Ranges, Symbols, Nils, Arrays, and/or Hashes)
 * implements best-choice enumerable methods to iterate over collections
 * uses boolean expressions and flow control structures to logically manage a program's flow
 * uses methods, arguments, and return values to break code into logical components
@@ -301,16 +301,16 @@ The student:
     * Variable and method names are self explanatory
     * Methods are under 7 lines
     * Lines of code are under 80 characters
-    * Project directory structure adheres to convention
-    * A linter reports less than 5 errors
+    * Project directory structure adheres to convention (uses `lib` and `spec` folders)
+    * A linter (e.g. Rubocop) reports less than 5 errors
 
 ## Testing
 
 The student:
 
-* writes Minitest tests that describe the expected behavior of a program according to technical specifications
+* writes RSpec tests that describe the expected behavior of a program according to technical specifications
 * names and orders tests so that a test file reads like documentation
-* writes Minitest assertions that accurately test a piece of functionality
+* writes RSpec assertions (`expect` statements) that accurately test a piece of functionality
 * writes a test before writing code that implements the behavior to make that test pass
 * writes both integration and unit tests
 
