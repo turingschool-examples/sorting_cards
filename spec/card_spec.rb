@@ -1,22 +1,20 @@
-require './lib/card'
-require 'rspec'
+require "./lib/card"
+require "rspec"
 
-RSpec.describe Card do
 
-  it "exists" do
+RSpec.describe(Card) do
+  it("exists") do
     card = Card.new("Ace", "Spades")
-    expect(card).to be_instance_of Card
+    expect(card).to(be_instance_of(Card))
   end
 
-  it "has a value" do
+  it("has a value") do
     card = Card.new("Ace", "Spades")
-    expect(card.value).to eq("Ace")
+    expect(card.value).to(eq("Ace"))
   end
 
-  it "has a suit" do
+  it("has a suit") do
     card = Card.new("Ace", "Spades")
-    expect(card.suit).to eq("Spades")
+    expect(card.suit).to(eq("Spades"))
   end
-
-
 end
