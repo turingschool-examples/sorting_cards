@@ -13,9 +13,9 @@ RSpec.describe Card do
     expect(card.value).to eq("Ace")
   end
   
-  # require'pry';binding.pry
-  xit "has a suit" do
+  it "has a suit" do
     card = Card.new("Ace", "Spades")
     expect(card.suit).to eq("Spades")
   end
 end
+# require'pry';binding.pry
