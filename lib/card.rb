@@ -4,4 +4,9 @@ class Card
     @suit = suit
     @value = value
   end
+
+  def value
+    @value = "Ace"
+  end
+
 end
