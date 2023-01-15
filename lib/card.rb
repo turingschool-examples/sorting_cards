@@ -7,11 +7,11 @@ class Card
     @value = value
   end
 
-  def value
+  def has_a_value
     @value = "Ace"
   end
   
-  def suit
+  def has_a_suit
     @suit = "Spades"
   end
 end
