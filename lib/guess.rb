@@ -9,13 +9,22 @@ class Guess
   end
 
   def correct?
-    @correct 
+    @correct
   end
 
   def feedback 
     "Correct!"
   end
 
+  def second_correct? 
+    @correct = false  
+  end
+
+  # def feedback 
+  #   "Incorrect."
+  # end
+
+  # require'pry';binding.pry
 end
 
 
