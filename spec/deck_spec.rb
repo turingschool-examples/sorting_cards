@@ -24,9 +24,17 @@ RSpec.describe Deck do
     expect(deck.cards).to eq(cards)
   end
   
+  it "count" do
+    card_1 = Card.new("3","Hearts") 
+    card_2 = Card.new("4", "Clubs")
+    card_3 = Card.new("5", "Diamonds")
+    cards = [card_1, card_2, card_3]
+    deck = Deck.new(cards)
+
+
+    expect(deck.count).to eq(3) 
+  end
   
   
-  
-  # expect(deck.count).to eq(3) 
   # require'pry'; binding.pry
 end
