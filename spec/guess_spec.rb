@@ -63,6 +63,6 @@ RSpec.describe Guess do
     guess.check_if_correct
     expect(guess.feedback).to eq("Incorrect.")
   end
- end
+end
 
 
