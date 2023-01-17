@@ -55,15 +55,13 @@ RSpec.describe Guess do
     expect(guess.second_correct?).to eq(false)
   end
   
-  # it "feedback" do
-  #   card = Card.new("Queen", "Clubs") 
-  #   guess = Guess.new("2 of Diamonds", card)
+  it "feedback" do
+    card = Card.new("Queen", "Clubs") 
+    guess = Guess.new("2 of Diamonds", card)
 
 
-  #   expect(guess.feedback).to eq("Incorrect.")
-  # end
-
-  # require'pry';binding.pry
+    expect(guess.second_feedback).to eq("Incorrect.")
+  end
  end
 
 

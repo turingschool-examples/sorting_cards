@@ -20,11 +20,9 @@ class Guess
     @correct = false  
   end
 
-  # def feedback 
-  #   "Incorrect."
-  # end
-
-  # require'pry';binding.pry
+  def second_feedback 
+    "Incorrect."
+  end
 end
 
 
