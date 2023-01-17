@@ -34,7 +34,4 @@ RSpec.describe Deck do
 
     expect(deck.count).to eq(3) 
   end
-  
-  
-  # require'pry'; binding.pry
 end

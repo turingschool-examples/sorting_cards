@@ -59,7 +59,6 @@ RSpec.describe Guess do
     card = Card.new("Queen", "Clubs") 
     guess = Guess.new("2 of Diamonds", card)
 
-
     expect(guess.second_feedback).to eq("Incorrect.")
   end
  end

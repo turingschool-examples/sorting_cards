@@ -1,13 +1,11 @@
 class Deck
-  attr_reader :suit,
-              :value
+  attr_reader :cards
 
   def initialize(cards)
     @cards = cards
     @suit = suit
     @value = value
     @count = 3
-
   end
 
   def cards 
@@ -17,8 +15,4 @@ class Deck
   def count
     @count = 3
   end
-  # require'pry'; binding.pry
-
-
-
 end
