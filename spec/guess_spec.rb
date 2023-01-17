@@ -33,8 +33,20 @@ RSpec.describe Guess do
     expect(guess.feedback).to eq("Correct!")
   end
   
+  it "exists" do 
+    card = Card.new("Queen", "Clubs") 
+    guess = Guess.new("2 of Diamonds", card)
+
+    expect(guess).to be_instance_of(Guess) 
+  end
   
-  
+  it "has attributes" do
+    card = Card.new("Queen", "Clubs") 
+    guess = Guess.new("2 of Diamonds", card)
+
+    expect(guess.card).to eq(card)
+    expect(guess.response).to eq("2 of Diamonds") 
+  end
   
   
   
