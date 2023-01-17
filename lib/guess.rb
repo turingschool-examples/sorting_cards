@@ -12,16 +12,20 @@ class Guess
     @correct
   end
 
+  def check_if_correct 
+    if response == "#{card.value} of #{card.suit}" 
+      @correct = true
+    else
+      @correct = false
+    end
+  end
+  
   def feedback 
-    "Correct!"
-  end
-
-  def second_correct? 
-    @correct = false  
-  end
-
-  def second_feedback 
-    "Incorrect."
+    if response == "#{card.value} of #{card.suit}" 
+      "Correct!"
+    else
+      "Incorrect."
+    end
   end
 end
 
