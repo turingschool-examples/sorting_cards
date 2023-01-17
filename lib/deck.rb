@@ -4,12 +4,15 @@ class Deck
 
   def initialize(cards)
     @cards = cards
-     @suit = suit
-     @value = value
+    @suit = suit
+    @value = value
 
   end
 
-
+  def cards 
+    @cards   
+  end
+  # require'pry'; binding.pry
 
 
 
