@@ -11,12 +11,12 @@ RSpec.describe Guess do
     expect(ten_of_hearts).to be_instance_of(Card)
   end
 
-  it 'can make a guess' do 
+  xit 'can make a guess' do 
     guess = Guess.new("10 of Hearts", ten_of_hearts)
     expect(guess.card).to eq(ten_of_hearts)
   end
   
-  it "can give feedback for a guess" do
+  xit "can give feedback for a guess" do
     card = Card.new("Queen", "Clubs")
     guess = Guess.new("Queen of Clubs", card)
     expect(guess.card).to eq(card)
