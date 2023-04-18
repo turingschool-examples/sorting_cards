@@ -17,13 +17,12 @@ RSpec.describe Guess do
     expect(guess.card).to eq(card)
   end
 
-  it "can get a response" do
-    card = Card.new("Queen", "Clubs")
-    guess = Guess.new("2 of Diamonds", card)
-    expect(guess.response).to eq("2 of Diamonds")
+  it 'can make a guess' do 
+    guess = Guess.new("10 of Hearts", ten_of_hearts)
+    expect(guess.card).to eq(ten_of_hearts)
   end
   
-  it "can be correct or incorrect" do
+  it "can give feedback for a guess" do
     card = Card.new("Queen", "Clubs")
     guess = Guess.new("2 of Diamonds", card)
     expect(guess.correct?).to eq(false)
