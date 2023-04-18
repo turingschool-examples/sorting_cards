@@ -23,7 +23,7 @@ RSpec.describe Guess do
     expect(guess.response).to eq("Queen of Clubs")
     expect(guess.correct?).to eq(true)
     expect(guess.feedback).to eq("Correct!")
-    
+        
     guess2 = Guess.new("Ace of Spades", card)
     expect(guess2.card).to eq(card)
     expect(guess2.response).to eq("Ace of Spades")
