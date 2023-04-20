@@ -11,19 +11,19 @@ RSpec.describe Guess do
     expect(card).to be_instance_of(Card)
   end
 
-  xit 'can make a guess' do 
+  it 'can make a guess' do 
     card = Card.new("Queen", "Clubs")
     guess = Guess.new("2 of Diamonds", card)
     expect(guess.card).to eq(card)
   end
 
-  xit "can get a response" do
+  it "can get a response" do
     card = Card.new("Queen", "Clubs")
     guess = Guess.new("2 of Diamonds", card)
     expect(guess.response).to eq("2 of Diamonds")
   end
   
-  xit "can be correct or incorrect" do
+  it "can be correct or incorrect" do
     card = Card.new("Queen", "Clubs")
     guess = Guess.new("2 of Diamonds", card)
     expect(guess.correct?).to eq(false)
@@ -33,7 +33,7 @@ RSpec.describe Guess do
     expect(guess.correct?).to eq(true)
   end
 
-  xit "can give feedback" do 
+  it "can give feedback" do 
     card = Card.new("Queen", "Clubs")
     guess = Guess.new("2 of Diamonds", card)
     expect(guess.feedback).to eq("Incorrect.")
