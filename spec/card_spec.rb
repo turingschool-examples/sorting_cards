@@ -13,5 +13,5 @@ RSpec.describe Card do
     expect(card.value).to eq("Ace")
     expect(card.suit).to eq("Spades")
   end
-
 end
+
