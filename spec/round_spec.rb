@@ -34,7 +34,7 @@ RSpec.describe Round do
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
-    expect(round.current_card).to eq("3","Hearts")
+    expect(round.current_card).to eq(card_1)
   end
 
   it "has a new guess" do 
@@ -48,7 +48,7 @@ RSpec.describe Round do
     expect(new_guess.correct?).to eq(true)    
   end
 
-  it "knows the number of correct guesses when they are correct" do 
+  it "knows the number of guesses when they are correct" do 
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
@@ -66,7 +66,9 @@ RSpec.describe Round do
     round = Round.new(deck)
     new_guess = round.record_guess({value: "3", suit: "Hearts"})
     new_guess2 = round.record_guess({value: "Jack", suit: "Diamonds"})
+    expect(round.guesses).to eq({value: "3", suit: "Hearts"})
     expect(round.guesses.count).to eq(2)
+  
   end
 
   it "can give feedback" do
@@ -88,7 +90,7 @@ RSpec.describe Round do
     new_guess2 = round.record_guess({value: "Jack", suit: "Diamonds"})
     expect(round.number_correct).to eq(1)
   end
-  
+
   it "can knows percent of correct guesses" do
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
