@@ -66,9 +66,8 @@ RSpec.describe Round do
     round = Round.new(deck)
     new_guess = round.record_guess({value: "3", suit: "Hearts"})
     new_guess2 = round.record_guess({value: "Jack", suit: "Diamonds"})
-    expect(round.guesses).to eq({value: "3", suit: "Hearts"})
+    expect(round.guesses).to eq([new_guess, new_guess2])
     expect(round.guesses.count).to eq(2)
-  
   end
 
   it "can give feedback" do
