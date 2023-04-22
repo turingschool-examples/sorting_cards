@@ -13,5 +13,9 @@ RSpec.describe Card do
     expect(card.value).to eq("Ace")
     expect(card.suit).to eq("Spades")
   end
-end
 
+  it "has a number for value" do
+    card = Card.new("7", "Spades")
+    expect(card.point_value).to eq(74)
+  end
+end
